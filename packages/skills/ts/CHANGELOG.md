@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skills-ts-0.2.0...skills-ts-0.3.0) (2026-04-30)
+
+
+### Features
+
+* add scope to publish command ([24d10cb](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/24d10cbf43ff89094055625fb541c6d89059a20d))
+
 ## [0.2.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skills-ts-0.1.0...skills-ts-0.2.0) (2026-04-30)
 
 
