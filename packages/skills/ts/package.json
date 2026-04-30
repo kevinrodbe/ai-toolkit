@@ -10,7 +10,7 @@
 	"author": "",
 	"type": "module",
 	"files": [
-		"dist"
+		"src/"
 	],
 	"scripts": {
 		"build": "echo no needed",

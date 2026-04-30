@@ -144,7 +144,7 @@ jobs:
                   git push origin --follow-tags
             - name: Publish Affected Root Nodes
               if: success()
-              run: pnpm nx affected -t publish:root --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }} --tag=beta
+              run: pnpm nx affected -t publish:root --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
