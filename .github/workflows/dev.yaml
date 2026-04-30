@@ -129,6 +129,8 @@ jobs:
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             - name: Version Bump
               run: pnpm nx affected -t version  --parallel=1
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Build Affected Root Nodes
               if: success()
               run: pnpm nx affected -t build --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
