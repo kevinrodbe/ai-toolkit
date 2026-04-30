@@ -13,7 +13,8 @@
 		"lint:all": "nx run-many --target=lint",
 		"lint:all:fix": "nx run-many --target=lint:fix",
 		"prepare": "husky",
-		"test:unit": "nx run-many --target=test:unit"
+		"test:unit": "nx run-many --target=test:unit",
+		"summary": "node scripts/summary.js"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "20.0.0",
