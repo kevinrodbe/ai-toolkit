@@ -1,0 +1,12 @@
+**/CHANGELOG.md
+**/README.md
+utils/**/*
+.github/**/*
+patches/**/*
+results/**/*
+.husky/**/*
+.vscode/**/*
+commitlint.config.ts
+eslint.config.js
+prettier.config.js
+.nxignore

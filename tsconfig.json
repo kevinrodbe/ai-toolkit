@@ -1,0 +1,10 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"exclude": ["node_modules"],
+	"extends": "./tsconfig.base.json",
+	"include": [
+		"commitlint.config.ts",
+		"prettier.config.js",
+		"eslint.config.js"
+	]
+}
