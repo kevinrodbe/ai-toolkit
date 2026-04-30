@@ -1,0 +1,159 @@
+# Github Actions pipeline for prerelease over pr for development branch
+
+name: Feature Pre-Release Pipeline
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    setup:
+        name: Setup Environment
+        runs-on: ubuntu-latest
+        if: (startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'feat/')) && github.base_ref == 'main'
+        outputs:
+            MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}
+            PRERELEASE_ID: ${{ steps.set_prerelease_id.outputs.PRERELEASE_ID }}
+            IS_VALID_BRANCH: ${{ steps.set_valid_branch.outputs.IS_VALID_BRANCH }}
+            TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+            AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.AFFECTED_LIST }}
+        steps:
+            - name: Get Max Jobs Count
+              id: get_max_jobs_count
+              run: echo "MAX_JOBS_COUNT=$(( $(nproc) * 2 ))" >> $GITHUB_OUTPUT
+            - name: Set Prerelease ID
+              id: set_prerelease_id
+              run: |
+                  set -eux
+                  BRANCH_ID=$(echo ${{ github.head_ref }} | cut -d '/' -f 4)
+                  COMMIT_ID=$(echo ${{ github.sha }} | cut -c 1-7)
+                  echo "PRERELEASE_ID=beta-$BRANCH_ID-$COMMIT_ID" >> $GITHUB_OUTPUT
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Setup Node.js Cache
+              uses: actions/setup-node@v3
+              with:
+                  registry-url: https://npm.pkg.github.com
+                  node-version: lts/*
+                  cache: 'pnpm'
+            - name: Install Dependencies
+              run: pnpm install --prefer-offline
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Set target branch as base branch
+              id: set_target_branch
+              run: echo "TARGET_BRANCH=$(git rev-parse --abbrev-ref ${{ github.base_ref }})" >> $GITHUB_OUTPUT
+            - name: Set valid branch
+              id: set_valid_branch
+              run: echo "IS_VALID_BRANCH=${{ (startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'feat/')) && steps.set_target_branch.outputs.TARGET_BRANCH == 'main' }}" >> $GITHUB_OUTPUT
+            - name: Setup NX SHAS
+              uses: nrwl/nx-set-shas@v3
+              with:
+                  main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+            - name: Setup NX Affected List
+              id: setup_affected_list
+              run: |
+                  set -eux
+                  echo "AFFECTED_LIST=$(pnpm nx print-affected --select=projects --type=lib | tr -d ' ' | tr -d '\n' |  jq -Rcs 'split(",")' | jq -r -s -c '{ nodes:.[] } | @json' )" >> $GITHUB_OUTPUT
+            - name: Test Affected List
+              run: |
+                  echo "${{ fromJson(steps.setup_affected_list.outputs.AFFECTED_LIST) }}"
+    test-code-quality:
+        needs: setup
+        name: Test Code Quality
+        runs-on: ubuntu-latest
+        if: needs.setup.outputs.IS_VALID_BRANCH
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Setup Node.js From Cache
+              uses: actions/setup-node@v3
+              with:
+                  registry-url: https://npm.pkg.github.com
+                  node-version: lts/*
+                  cache: 'pnpm'
+            - name: Install Dependencies
+              run: pnpm install --prefer-offline
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Setup NX SHAS
+              uses: nrwl/nx-set-shas@v3
+              with:
+                  main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
+            - name: Cache Nx
+              uses: actions/cache@v3
+              with:
+                  path: node_modules/.cache/nx
+                  key: ${{ runner.os }}-nx-${{ hashFiles('packages/**/package.json') }}-code-quality
+            - name: Run Lint over Affected packages
+              run: pnpm nx affected:lint --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
+    version-pre-release:
+        needs: [setup, test-code-quality]
+        name: Version PreRelease
+        runs-on: ubuntu-latest
+        if: needs.setup.outputs.IS_VALID_BRANCH
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Setup Node.js From Cache
+              uses: actions/setup-node@v3
+              with:
+                  registry-url: https://npm.pkg.github.com
+                  node-version: lts/*
+                  cache: 'pnpm'
+            - name: Summary for Affected List 🗒️
+              run: |
+                echo "### Hello, affected list! :rocket:" >> $GITHUB_STEP_SUMMARY
+                echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+                echo '${{ needs.setup.outputs.AFFECTED_LIST }}' | jq -r '.nodes[] | "- " + .' >> $GITHUB_STEP_SUMMARY
+
+            - name: Install Dependencies
+              run: pnpm install --prefer-offline
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Setup NX SHAS
+              uses: nrwl/nx-set-shas@v3
+              with:
+                  main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
+            - name: Cache Nx
+              uses: actions/cache@v3
+              with:
+                  path: node_modules/.cache/nx
+                  key: ${{ runner.os }}-nx-${{ hashFiles('packages/**/package.json') }}-${{ hashFiles('pnpm-lock.yaml') }}-build
+            - name: Prepare GIT Credentials
+              run: |
+                  git config --global user.name 'github-actions[bot]'
+                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            - name: Version Bump
+              run: pnpm nx affected -t version --releaseAs=prerelease --preid=${{needs.setup.outputs.PRERELEASE_ID}} --skipCommit --skipRootChangelog --skipProjectChangelog  --parallel=1
+            - name: Build Affected Root Nodes
+              if: success()
+              run: pnpm nx affected -t build --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
+            - name: Publish Affected Root Nodes
+              if: success()
+              run: pnpm nx affected -t publish:root --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }} --tag=${{needs.setup.outputs.PRERELEASE_ID}}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Generate Summary
+              if: success()
+              run: pnpm summary
