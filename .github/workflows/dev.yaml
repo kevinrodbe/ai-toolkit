@@ -90,7 +90,7 @@ jobs:
     #           run: pnpm nx affected:lint --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
     version-release:
         needs: [setup]
-        name: Beta Version Release
+        name: Version Release
         runs-on: ubuntu-latest
         permissions:
             contents: write

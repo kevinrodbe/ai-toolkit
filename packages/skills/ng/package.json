@@ -9,7 +9,7 @@
 	},
 	"author": "",
 	"files": [
-		"src/"
+		"src"
 	],
 	"type": "module",
 	"scripts": {

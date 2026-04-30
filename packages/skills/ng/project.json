@@ -31,13 +31,19 @@
 				"command": "pnpm -F skill-ng publish --no-git-checks"
 			}
 		},
+		"sync-skill-version": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
+			}
+		},
 		"version": {
 			"executor": "@jscutlery/semver:version",
 			"options": {
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skill-ng:github"],
+				"postTargets": ["skill-ng:sync-skill-version", "skill-ng:github"],
 				"preset": "conventional",
 				"push": true,
 				"trackDeps": true

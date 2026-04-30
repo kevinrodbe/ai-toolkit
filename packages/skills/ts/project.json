@@ -31,13 +31,19 @@
 				"command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
 			}
 		},
+		"sync-skill-version": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
+			}
+		},
 		"version": {
 			"executor": "@jscutlery/semver:version",
 			"options": {
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skill-ts:github"],
+				"postTargets": ["skill-ts:sync-skill-version", "skill-ts:github"],
 				"preset": "conventional",
 				"push": true,
 				"trackDeps": true
