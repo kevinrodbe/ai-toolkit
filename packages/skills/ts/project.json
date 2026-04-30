@@ -28,7 +28,7 @@
 		"publish:root": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "pnpm -F skills-ts publish --no-git-checks"
+				"command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
 			}
 		},
 		"version": {
