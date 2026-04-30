@@ -37,7 +37,7 @@
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skills-ts:github"],
+				"postTargets": ["skill-ts:github"],
 				"preset": "conventional",
 				"push": true,
 				"trackDeps": true
