@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "skills-ng",
+	"name": "skill-ng",
 	"projectType": "library",
 	"tags": ["type:library", "scope:package", "destination:feed"],
 	"targets": {
@@ -28,7 +28,7 @@
 		"publish:root": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "pnpm -F @kevinrodbe/skills-ng publish --no-git-checks"
+				"command": "pnpm -F skill-ng publish --no-git-checks"
 			}
 		},
 		"version": {
@@ -37,7 +37,7 @@
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skills-ng:github"],
+				"postTargets": ["skill-ng:github"],
 				"preset": "conventional",
 				"push": true,
 				"trackDeps": true

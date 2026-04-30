@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "skills-ts",
+	"name": "skill-ts",
 	"projectType": "library",
 	"tags": ["type:library", "scope:package", "destination:feed"],
 	"targets": {
