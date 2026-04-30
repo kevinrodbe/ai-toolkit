@@ -1,11 +1,11 @@
 ---
-name: ng-core
+name: ng-v15
 description: >
   Angular core patterns: standalone components, signals, inject, control flow, zoneless.
   Trigger: When creating Angular components, using signals, or setting up zoneless.
 metadata:
   author: k-test
-  version: "1.0"
+  version: "1.1"
 ---
 
 ## Standalone Components (always REQUIRED)
