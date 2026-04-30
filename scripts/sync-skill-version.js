@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 
 function parseArgs(argv) {
@@ -77,6 +78,14 @@ function main() {
 		process.exit(1);
 	}
 
+	const projectJsonPath = join(absProjectRoot, 'project.json');
+	if (!existsSync(projectJsonPath)) {
+		console.error(`project.json not found at: ${projectJsonPath}`);
+		process.exit(1);
+	}
+
+	const { name: projectName } = JSON.parse(readFileSync(projectJsonPath, 'utf-8'));
+
 	const skillMdPath = join(absProjectRoot, 'src', 'SKILL.md');
 	if (!existsSync(skillMdPath)) {
 		console.log(`No SKILL.md found at ${skillMdPath} — skipping`);
@@ -93,6 +102,16 @@ function main() {
 
 	writeFileSync(skillMdPath, content, 'utf-8');
 	console.log(`Synced SKILL.md version → ${version} (${skillMdPath})`);
+
+	const commitMessage = `chore(${projectName}): release version ${version} [skip ci]`;
+	/** @param {string} cmd */
+	const git = cmd => execSync(`git ${cmd}`, { stdio: 'inherit' });
+
+	git(`add "${skillMdPath}"`);
+	git(`commit --no-verify -m "${commitMessage}"`);
+	git('push');
+
+	console.log(`Committed and pushed: ${commitMessage}`);
 }
 
 main();
