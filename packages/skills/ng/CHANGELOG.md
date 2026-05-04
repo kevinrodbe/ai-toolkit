@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.3.1...skill-ng-0.4.0) (2026-05-04)
+
+
+### Features
+
+* rm auto tag and create ([380a6ff](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/380a6ff99ec27e93c407613c4f9edebc540cf4cf))
+* try ignore tag ([b7bb309](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/b7bb309b4b3f19a771726ea1a07d235c15256a72))
+
 ## [0.3.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.3.0...skill-ng-0.3.1) (2026-05-04)
 
 
