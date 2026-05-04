@@ -40,7 +40,7 @@
 		"commit-and-tag": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "git add -u && git commit -m 'chore({projectName}): release version {args.version} [skip ci]' --no-verify && git tag {args.tag} && git push --follow-tags --no-verify"
+				"command": "VERSION=$(node -p \"require('./{projectRoot}/package.json').version\") && git add -u && git commit -m \"chore({projectName}): release version $VERSION [skip ci]\" --no-verify && git tag {args.tag} && git push --follow-tags --no-verify"
 			}
 		},
 		"version": {
