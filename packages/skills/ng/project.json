@@ -37,15 +37,22 @@
 				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
 			}
 		},
+		"commit-and-tag": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "git add -u && git commit -m 'chore(${projectName}): release version {args.version} [skip ci]' --no-verify && git tag {args.tag} && git push --follow-tags --no-verify"
+			}
+		},
 		"version": {
 			"executor": "@jscutlery/semver:version",
 			"options": {
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skill-ng:sync-skill-version", "skill-ng:github"],
+				"postTargets": ["skill-ng:sync-skill-version", "skill-ng:commit-and-tag", "skill-ng:github"],
 				"preset": "conventional",
-				"push": true,
+				"push": false,
+				"skipCommit": true,
 				"trackDeps": true
 			}
 		}

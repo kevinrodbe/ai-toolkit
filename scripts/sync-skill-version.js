@@ -3,6 +3,19 @@ import { execSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 
 function parseArgs(argv) {
+	/**
+	[
+		'/Users/m-user/.volta/tools/image/node/22.18.0/bin/node',
+		'/Users/m-user/projects/test/ia/ia-toolkit-test-nx/scripts/sync-skill-version.js',
+		'--projectRoot',
+		'packages/skills/ts'
+	]
+	[
+		'/Users/m-user/.volta/tools/image/node/22.18.0/bin/node',
+		'/Users/m-user/projects/test/ia/ia-toolkit-test-nx/scripts/sync-skill-version.js',
+		'--projectRoot=packages/skills/ts'
+	]
+	 */
 	const args = argv.slice(2);
 	let projectRoot;
 	for (let i = 0; i < args.length; i++) {
@@ -65,7 +78,7 @@ function main() {
 	}
 
 	const absProjectRoot = resolve(projectRoot);
-
+	// /Users/m-user/projects/test/ia/ia-toolkit-test-nx/packages/skills/ts
 	const packageJsonPath = join(absProjectRoot, 'package.json');
 	if (!existsSync(packageJsonPath)) {
 		console.error(`package.json not found at: ${packageJsonPath}`);
@@ -103,13 +116,13 @@ function main() {
 	writeFileSync(skillMdPath, content, 'utf-8');
 	console.log(`Synced SKILL.md version → ${version} (${skillMdPath})`);
 
-	const commitMessage = `chore(${projectName}): release version ${version} [skip ci]`;
+	const commitMessage = `chore($${projectName}): release version ${version} [skip ci]`;
 	/** @param {string} cmd */
 	const git = cmd => execSync(`git ${cmd}`, { stdio: 'inherit' });
 
-	git(`add "${skillMdPath}"`);
-	git(`commit --no-verify -m "${commitMessage}"`);
-	git('push');
+	// git(`add "${skillMdPath}"`);
+	// git(`commit --no-verify -m "${commitMessage}"`);
+	// git('push');
 
 	console.log(`Committed and pushed: ${commitMessage}`);
 }
