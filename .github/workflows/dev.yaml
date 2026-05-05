@@ -54,40 +54,12 @@ jobs:
             - name: Test Affected List
               run: |
                   echo "${{ fromJson(steps.setup_affected_list.outputs.AFFECTED_LIST) }}"
-    # test-code-quality:
-    #     needs: setup
-    #     name: Test Code Quality
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - name: Checkout
-    #           uses: actions/checkout@v3
-    #           with:
-    #               fetch-depth: 0
-    #         - name: Setup PNPM
-    #           uses: pnpm/action-setup@v2
-    #           with:
-    #               version: 8
-    #         - name: Setup Node.js From Cache
-    #           uses: actions/setup-node@v3
-    #           with:
-    #               registry-url: https://npm.pkg.github.com
-    #               node-version: lts/*
-    #               cache: 'pnpm'
-    #         - name: Install Dependencies
-    #           run: pnpm install --prefer-offline
-    #           env:
-    #               NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #         - name: Setup NX SHAS
-    #           uses: nrwl/nx-set-shas@v3
-    #           with:
-    #               main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
-    #         - name: Cache Nx
-    #           uses: actions/cache@v3
-    #           with:
-    #               path: node_modules/.cache/nx
-    #               key: ${{ runner.os }}-nx-${{ hashFiles('packages/**/package.json') }}-code-quality
-    #         - name: Run Lint over Affected packages
-    #           run: pnpm nx affected:lint --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
+            - name: print outputs
+              run: |
+                  echo "MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}"
+                  echo "TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}"
+                  echo "AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.AFFECTED_LIST }}"
+
     version-release:
         needs: [setup]
         name: Version Release
@@ -96,6 +68,11 @@ jobs:
             contents: write
             packages: write
         steps:
+            - name: print inputs
+              run: |
+                  echo "MAX_JOBS_COUNT: ${{ needs.setup.outputs.MAX_JOBS_COUNT }}"
+                  echo "TARGET_BRANCH: ${{ needs.setup.outputs.TARGET_BRANCH }}"
+                  echo "AFFECTED_LIST: ${{ needs.setup.outputs.AFFECTED_LIST }}"
             - name: Checkout
               uses: actions/checkout@v3
               with:
