@@ -51,34 +51,34 @@ jobs:
               id: set_target_branch
               shell: bash
               run: |
-                set -eux
-                if [ -n "${{ github.base_ref }}" ]; then
-                  TARGET="${{ github.base_ref }}"
-                else
-                  TARGET="${{ github.ref_name }}"
-                fi
-                echo "TARGET_BRANCH=$TARGET" >> $GITHUB_OUTPUT
+                  set -eux
+                  if [ -n "${{ github.base_ref }}" ]; then
+                    TARGET="${{ github.base_ref }}"
+                  else
+                    TARGET="${{ github.ref_name }}"
+                  fi
+                  echo "TARGET_BRANCH=$TARGET" >> $GITHUB_OUTPUT
 
-            - name: Setup NX SHAS
-              uses: nrwl/nx-set-shas@v3
-              with:
-                  main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+            - name: Setup NX Base
+              run: |
+                  echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+                  echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
 
             - name: Setup NX Affected List
               id: setup_affected_list
               run: |
-                set -eux
-                AFFECTED_LIST=$(eval "pnpm nx show projects --affected --json" || echo "[]")
-                echo "::debug::Affected list: ${AFFECTED_LIST}"
-                AFFECTED_DEPS_COUNT=$(echo "${AFFECTED_LIST}" | jq -r '. | length')
-                if [ "${AFFECTED_DEPS_COUNT}" -eq 0 ]; then
-                    echo "PROJECT_NAMES={\"names\":[\"none\"]}" >> $GITHUB_OUTPUT
-                    echo "SKIP=true" >> $GITHUB_OUTPUT
-                    echo "::warning title=skipping jobs::Skipping job executions due no affected projects were found"
-                    exit 0
-                fi
-                echo "PROJECT_NAMES=$(echo $AFFECTED_LIST | jq -r '. | @json')" >> $GITHUB_OUTPUT
-                echo "SKIP=false" >> $GITHUB_OUTPUT
+                  set -eux
+                  AFFECTED_LIST=$(eval "pnpm nx show projects --affected --json" || echo "[]")
+                  echo "::debug::Affected list: ${AFFECTED_LIST}"
+                  AFFECTED_DEPS_COUNT=$(echo "${AFFECTED_LIST}" | jq -r '. | length')
+                  if [ "${AFFECTED_DEPS_COUNT}" -eq 0 ]; then
+                      echo "PROJECT_NAMES={\"names\":[\"none\"]}" >> $GITHUB_OUTPUT
+                      echo "SKIP=true" >> $GITHUB_OUTPUT
+                      echo "::warning title=skipping jobs::Skipping job executions due no affected projects were found"
+                      exit 0
+                  fi
+                  echo "PROJECT_NAMES=$(echo $AFFECTED_LIST | jq -r '. | @json')" >> $GITHUB_OUTPUT
+                  echo "SKIP=false" >> $GITHUB_OUTPUT
 
             - name: Print Affected List
               run: |
@@ -122,10 +122,11 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Setup NX SHAS
-              uses: nrwl/nx-set-shas@v5
-              with:
-                  main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
+            - name: Setup NX Base
+              run: |
+                  echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+                  echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+
             - name: Cache Nx
               uses: actions/cache@v3
               with:
