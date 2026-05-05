@@ -49,10 +49,10 @@
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["skill-ng:sync-skill-version", "skill-ng:commit-and-tag", "skill-ng:github"],
+				"postTargets": ["skill-ng:github"],
 				"preset": "conventional",
-				"push": false,
-				"skipCommit": true,
+				"push": true,
+				"skipCommit": false,
 				"trackDeps": true
 			}
 		}
