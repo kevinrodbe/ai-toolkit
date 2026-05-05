@@ -26,7 +26,7 @@ jobs:
               run: echo "MAX_JOBS_COUNT=$(( $(nproc) * 2 ))" >> $GITHUB_OUTPUT
 
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
 
@@ -104,7 +104,7 @@ jobs:
                   echo "TARGET_BRANCH: ${{ needs.setup.outputs.TARGET_BRANCH }}"
                   echo "AFFECTED_LIST: ${{ needs.setup.outputs.AFFECTED_LIST }}"
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
             - name: Setup PNPM
@@ -123,7 +123,7 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Setup NX SHAS
-              uses: nrwl/nx-set-shas@v3
+              uses: nrwl/nx-set-shas@v5
               with:
                   main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
             - name: Cache Nx
