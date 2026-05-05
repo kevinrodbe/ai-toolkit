@@ -18,6 +18,9 @@ jobs:
             TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
             AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.AFFECTED_LIST }}
         steps:
+            - name: Install O.S Dependencies
+              run: sudo apt-get update && sudo apt-get install -y jq
+
             - name: Get Max Jobs Count
               id: get_max_jobs_count
               run: echo "MAX_JOBS_COUNT=$(( $(nproc) * 2 ))" >> $GITHUB_OUTPUT
