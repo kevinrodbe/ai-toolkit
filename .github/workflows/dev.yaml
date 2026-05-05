@@ -16,7 +16,7 @@ jobs:
         outputs:
             MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}
             TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
-            AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.AFFECTED_LIST }}
+            AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}
         steps:
             - name: Install O.S Dependencies
               run: sudo apt-get update && sudo apt-get install -y jq
@@ -88,7 +88,7 @@ jobs:
               run: |
                   echo "MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}"
                   echo "TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}"
-                  echo "AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.AFFECTED_LIST }}"
+                  echo "AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
 
     version-release:
         needs: [setup]

@@ -14,19 +14,27 @@ if (!outputPath) {
 	process.exit(0);
 }
 
+/** @param {string} dir @param {Map<string, string>} map */
+function findProjects(dir, map) {
+	if (!existsSync(dir)) return;
+	for (const entry of readdirSync(dir, { withFileTypes: true })) {
+		if (!entry.isDirectory()) continue;
+		const entryPath = join(dir, entry.name);
+		const projectJsonPath = join(entryPath, 'project.json');
+		const packageJsonPath = join(entryPath, 'package.json');
+		if (existsSync(projectJsonPath) && existsSync(packageJsonPath)) {
+			const { name } = JSON.parse(readFileSync(projectJsonPath, 'utf-8'));
+			map.set(name, packageJsonPath);
+		} else {
+			findProjects(entryPath, map);
+		}
+	}
+}
+
 function buildProjectMap() {
 	const map = new Map();
 	for (const dir of ['packages', 'apps']) {
-		const dirPath = join(rootDir, dir);
-		if (!existsSync(dirPath)) continue;
-		for (const entry of readdirSync(dirPath)) {
-			const projectJsonPath = join(dirPath, entry, 'project.json');
-			const packageJsonPath = join(dirPath, entry, 'package.json');
-			if (existsSync(projectJsonPath) && existsSync(packageJsonPath)) {
-				const { name } = JSON.parse(readFileSync(projectJsonPath, 'utf-8'));
-				map.set(name, packageJsonPath);
-			}
-		}
+		findProjects(join(rootDir, dir), map);
 	}
 	return map;
 }
