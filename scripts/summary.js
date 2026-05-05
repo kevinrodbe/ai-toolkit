@@ -33,12 +33,14 @@ function buildProjectMap() {
 
 function getAffectedProjects() {
 	try {
-		const result = execSync('pnpm nx print-affected --select=projects --type=lib', {
+		const result = execSync('pnpm nx show projects --affected --json', {
 			cwd: rootDir,
 			encoding: 'utf-8',
 			stdio: ['pipe', 'pipe', 'pipe'],
 		}).trim();
-		return result ? result.split(',').map((p) => p.trim()).filter(Boolean) : [];
+		if (!result) return [];
+		const parsed = JSON.parse(result);
+		return Array.isArray(parsed) ? parsed : [];
 	} catch (err) {
 		console.warn('Could not get affected projects:', err instanceof Error ? err.message : err);
 		return [];
@@ -47,9 +49,10 @@ function getAffectedProjects() {
 
 const projectMap = buildProjectMap();
 const affectedProjects = getAffectedProjects();
+console.log('Affected projects:', affectedProjects.length > 0 ? affectedProjects.join(', ') : 'none');
 
 const rows = affectedProjects
-	.map((projectName) => {
+	.map(projectName => {
 		const packageJsonPath = projectMap.get(projectName);
 		if (!packageJsonPath) return null;
 		const { name, version } = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
