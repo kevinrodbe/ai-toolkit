@@ -80,9 +80,9 @@ jobs:
                 echo "PROJECT_NAMES=$(echo $AFFECTED_LIST | jq -r '. | @json')" >> $GITHUB_OUTPUT
                 echo "SKIP=false" >> $GITHUB_OUTPUT
 
-            - name: Test Affected List
+            - name: Print Affected List
               run: |
-                  echo "${{ fromJson(steps.setup_affected_list.outputs.AFFECTED_LIST) }}"
+                  echo "Affected projects: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
 
             - name: print outputs
               run: |
