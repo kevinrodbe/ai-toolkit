@@ -116,12 +116,6 @@ const main = () => {
 
 	writeFileSync(skillMdPath, updatedContent, 'utf-8');
 	console.log(`Synced SKILL.md version → ${version} (${skillMdPath})`);
-
-	const commitMessage = `chore(${projectName}): release version ${version} [skip ci]`;
-
-	// git(`add "${skillMdPath}"`);
-	// git(`commit --no-verify -m "${commitMessage}"`);
-	// git('push');
 };
 
 main();

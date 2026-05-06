@@ -59,8 +59,6 @@ const main = () => {
 
 	git('push --no-verify');
 	git(`push origin ${tag} --no-verify`);
-
-	console.log(`Released: ${tag}`);
 };
 
 main();
