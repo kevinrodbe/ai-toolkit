@@ -51,7 +51,7 @@
 				"noVerify": true,
 				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-ng:github"],
 				"preset": "conventional",
-				"push": true,
+				"push": false,
 				"skipCommit": false,
 				"trackDeps": true
 			}
