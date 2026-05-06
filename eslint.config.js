@@ -31,7 +31,7 @@ export default tslint.config(
 		languageOptions: {
 			ecmaVersion: 'latest',
 			parserOptions: {
-				project: ['./tsconfig.json', './packages/skills/*/tsconfig.json'],
+				project: ['./tsconfig.json'],
 				tsconfigRootDir: __dirname,
 			},
 			sourceType: 'module',
