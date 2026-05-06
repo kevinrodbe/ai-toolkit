@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.17.2](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-0.17.1...skill-ts-0.17.2) (2026-05-06)
+
+
+### Bug Fixes
+
+* ts test 2 ([76d8920](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/76d892074b183ecd4aa07becab3d3aed73e737f4))
+
 ## [0.17.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-0.17.0...skill-ts-0.17.1) (2026-05-06)
 
 
