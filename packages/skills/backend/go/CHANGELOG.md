@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-go-0.1.0...skill-go-0.2.0) (2026-05-06)
+
+
+### Features
+
+* test go ts ([498d713](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/498d713ea06572b6c706155900c35a649fab4d7a))
+* test go ts 2 ([36cec2c](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/36cec2c83c39bd3b9580092fd28d68fedfeb1c3f))
+
 ## 0.1.0 (2026-05-06)
 
 
