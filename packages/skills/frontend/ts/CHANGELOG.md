@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.18.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-0.17.2...skill-ts-0.18.0) (2026-05-06)
+
+
+### Features
+
+* move skills folders ([a8e9016](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/a8e9016ac758a54ea8e969743eb747ec577c85c7))
+* test go ts ([498d713](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/498d713ea06572b6c706155900c35a649fab4d7a))
+* test go ts 2 ([36cec2c](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/36cec2c83c39bd3b9580092fd28d68fedfeb1c3f))
+
 ## [0.17.2](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-0.17.1...skill-ts-0.17.2) (2026-05-06)
 
 
