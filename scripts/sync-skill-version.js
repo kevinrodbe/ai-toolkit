@@ -36,9 +36,11 @@ const updateFrontmatterVersion = (content, newVersion) => {
 	let frontmatterOpen = false;
 	let frontmatterDone = false;
 	let inMetadata = false;
-	let updated = false;
+	let metadataLineIndex = -1;
+	let frontmatterCloseIndex = -1;
+	let versionFound = false;
 
-	const result = lines.map(line => {
+	const result = lines.map((line, i) => {
 		if (!frontmatterOpen && !frontmatterDone && line.trim() === '---') {
 			frontmatterOpen = true;
 			return line;
@@ -47,6 +49,7 @@ const updateFrontmatterVersion = (content, newVersion) => {
 		if (frontmatterOpen && line.trim() === '---') {
 			frontmatterOpen = false;
 			frontmatterDone = true;
+			frontmatterCloseIndex = i;
 			inMetadata = false;
 			return line;
 		}
@@ -54,12 +57,13 @@ const updateFrontmatterVersion = (content, newVersion) => {
 		if (frontmatterOpen) {
 			if (/^metadata:/.test(line)) {
 				inMetadata = true;
+				metadataLineIndex = i;
 			} else if (inMetadata && /^\S/.test(line)) {
 				inMetadata = false;
 			}
 
 			if (inMetadata && /^\s+version:\s/.test(line)) {
-				updated = true;
+				versionFound = true;
 				return line.replace(VERSION_PATTERN, `version: "${newVersion}"`);
 			}
 		}
@@ -67,7 +71,19 @@ const updateFrontmatterVersion = (content, newVersion) => {
 		return line;
 	});
 
-	return { content: result.join('\n'), updated };
+	if (versionFound) {
+		return { content: result.join('\n'), updated: true };
+	}
+
+	if (metadataLineIndex !== -1) {
+		result.splice(metadataLineIndex + 1, 0, `  version: "${newVersion}"`);
+	} else if (frontmatterCloseIndex !== -1) {
+		result.splice(frontmatterCloseIndex, 0, 'metadata:', `  version: "${newVersion}"`);
+	} else {
+		return { content, updated: false };
+	}
+
+	return { content: result.join('\n'), updated: true };
 };
 
 const main = () => {
@@ -107,7 +123,7 @@ const main = () => {
 	const { content: updatedContent, updated } = updateFrontmatterVersion(original, version);
 
 	if (!updated) {
-		console.log(`SKILL.md at ${skillMdPath} has no metadata.version field — skipping`);
+		console.log(`SKILL.md at ${skillMdPath} has no frontmatter — skipping`);
 		process.exit(0);
 	}
 
