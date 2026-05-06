@@ -79,7 +79,6 @@ const main = () => {
 	}
 
 	const absoluteProjectRoot = resolve(projectRoot);
-	// /Users/m-user/projects/test/ia/ia-toolkit-test-nx/packages/skills/ts
 	const packageJsonPath = join(absoluteProjectRoot, 'package.json');
 	if (!existsSync(packageJsonPath)) {
 		console.error(`package.json not found at: ${packageJsonPath}`);
@@ -97,8 +96,6 @@ const main = () => {
 		console.error(`project.json not found at: ${projectJsonPath}`);
 		process.exit(1);
 	}
-
-	const { name: projectName } = readJson(projectJsonPath);
 
 	const skillMdPath = join(absoluteProjectRoot, 'src', 'SKILL.md');
 	if (!existsSync(skillMdPath)) {
