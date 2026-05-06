@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { git, parseArgs, readJson } from './utils';
+import { git, parseArgs, readJson } from './utils.js';
 
 const main = () => {
 	const { projectRoot, projectName } = parseArgs(process.argv, ['--projectRoot', '--projectName']);

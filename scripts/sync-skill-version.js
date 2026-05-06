@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { parseArgs, readJson } from './utils';
+import { parseArgs, readJson } from './utils.js';
 
 const VERSION_PATTERN = /version:\s*"[^"]*"/;
 
