@@ -47,6 +47,18 @@
 			"executor": "@jscutlery/semver:version",
 			"options": {
 				"allowEmptyRelease": true,
+				"noVerify": true,
+				"postTargets": ["sync-skill-version", "version-push"],
+				"preset": "conventional",
+				"push": false,
+				"skipCommit": true,
+				"trackDeps": true
+			}
+		},
+		"version-push": {
+			"executor": "@jscutlery/semver:version",
+			"options": {
+				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
 				"postTargets": ["skill-ts:github"],
