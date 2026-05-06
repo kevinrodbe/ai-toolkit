@@ -1,31 +1,8 @@
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { execSync } from 'node:child_process';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { parseArgs, readJson } from './utils';
 
 const VERSION_PATTERN = /version:\s*"[^"]*"/;
-
-/** @param {string} cmd */
-const git = cmd => execSync(`git ${cmd}`, { stdio: 'inherit' });
-
-/** @param {string} filePath */
-const readJson = filePath => /** @type {Record<string, string>} */ (JSON.parse(readFileSync(filePath, 'utf-8')));
-
-/** @param {string[]} argv */
-const parseArgs = argv => {
-	const args = argv.slice(2);
-
-	const separateFlagIndex = args.findIndex(arg => arg === '--projectRoot');
-	if (separateFlagIndex !== -1) {
-		return { projectRoot: args[separateFlagIndex + 1] };
-	}
-
-	const inlineArg = args.find(arg => arg.startsWith('--projectRoot='));
-	if (inlineArg) {
-		return { projectRoot: inlineArg.split('=')[1] };
-	}
-
-	return { projectRoot: undefined };
-};
 
 /**
  * @param {string} content
@@ -43,6 +20,7 @@ const updateFrontmatterVersion = (content, newVersion) => {
 	const result = lines.map((line, i) => {
 		if (!frontmatterOpen && !frontmatterDone && line.trim() === '---') {
 			frontmatterOpen = true;
+
 			return line;
 		}
 
@@ -51,6 +29,7 @@ const updateFrontmatterVersion = (content, newVersion) => {
 			frontmatterDone = true;
 			frontmatterCloseIndex = i;
 			inMetadata = false;
+
 			return line;
 		}
 
@@ -64,6 +43,7 @@ const updateFrontmatterVersion = (content, newVersion) => {
 
 			if (inMetadata && /^\s+version:\s/.test(line)) {
 				versionFound = true;
+
 				return line.replace(VERSION_PATTERN, `version: "${newVersion}"`);
 			}
 		}
@@ -87,35 +67,39 @@ const updateFrontmatterVersion = (content, newVersion) => {
 };
 
 const main = () => {
-	const { projectRoot } = parseArgs(process.argv);
+	const { projectRoot } = parseArgs(process.argv, ['--projectRoot']);
 
 	if (!projectRoot) {
-		console.error('Error: --projectRoot argument is required');
+		console.error('❌ Error: --projectRoot argument is required');
 		process.exit(1);
 	}
 
 	const absoluteProjectRoot = resolve(projectRoot);
 	const packageJsonPath = join(absoluteProjectRoot, 'package.json');
+
 	if (!existsSync(packageJsonPath)) {
-		console.error(`package.json not found at: ${packageJsonPath}`);
+		console.error(`❌ Error: package.json not found at: ${packageJsonPath}`);
 		process.exit(1);
 	}
 
 	const { version } = readJson(packageJsonPath);
+
 	if (!version) {
-		console.error(`No version field found in ${packageJsonPath}`);
+		console.error(`❌ Error: No version field found in ${packageJsonPath}`);
 		process.exit(1);
 	}
 
 	const projectJsonPath = join(absoluteProjectRoot, 'project.json');
+
 	if (!existsSync(projectJsonPath)) {
-		console.error(`project.json not found at: ${projectJsonPath}`);
+		console.error(`❌ Error: project.json not found at: ${projectJsonPath}`);
 		process.exit(1);
 	}
 
 	const skillMdPath = join(absoluteProjectRoot, 'src', 'SKILL.md');
+
 	if (!existsSync(skillMdPath)) {
-		console.log(`No SKILL.md found at ${skillMdPath} — skipping`);
+		console.log(`⚠️ Warning: No SKILL.md found at ${skillMdPath} — skipping`);
 		process.exit(0);
 	}
 
@@ -123,12 +107,12 @@ const main = () => {
 	const { content: updatedContent, updated } = updateFrontmatterVersion(original, version);
 
 	if (!updated) {
-		console.log(`SKILL.md at ${skillMdPath} has no frontmatter — skipping`);
+		console.log(`⚠️ Warning: SKILL.md at ${skillMdPath} has no frontmatter — skipping`);
 		process.exit(0);
 	}
 
 	writeFileSync(skillMdPath, updatedContent, 'utf-8');
-	console.log(`Synced SKILL.md version → ${version} (${skillMdPath})`);
+	console.log(`✅ Synced SKILL.md version → ${version}`);
 };
 
 main();

@@ -1,28 +1,9 @@
-import { readFileSync, existsSync } from 'node:fs';
-import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-
-/** @param {string} cmd */
-const git = cmd => execSync(`git ${cmd}`, { stdio: 'inherit' });
-
-/** @param {string} filePath */
-const readJson = filePath => JSON.parse(readFileSync(filePath, 'utf-8'));
-
-/** @param {string[]} argv */
-const parseArgs = argv => {
-	const args = argv.slice(2);
-	const get = flag => {
-		const separateIdx = args.findIndex(a => a === flag);
-		if (separateIdx !== -1) return args[separateIdx + 1];
-		const inline = args.find(a => a.startsWith(`${flag}=`));
-		if (inline) return inline.split('=')[1];
-		return undefined;
-	};
-	return { projectRoot: get('--projectRoot'), projectName: get('--projectName') };
-};
+import { git, parseArgs, readJson } from './utils';
 
 const main = () => {
-	const { projectRoot, projectName } = parseArgs(process.argv);
+	const { projectRoot, projectName } = parseArgs(process.argv, ['--projectRoot', '--projectName']);
 
 	if (!projectRoot) {
 		console.error('Error: --projectRoot argument is required');
