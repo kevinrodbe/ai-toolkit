@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "skill-ts",
+	"name": "skill-go",
 	"projectType": "library",
 	"tags": ["type:library", "scope:package", "destination:feed"],
 	"targets": {
@@ -28,7 +28,7 @@
 		"publish:root": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
+				"command": "pnpm -F @kevinrodbe/skill-go publish --no-git-checks"
 			}
 		},
 		"sync-skill-version": {
@@ -49,7 +49,7 @@
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-ts:github"],
+				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-go:github"],
 				"preset": "conventional",
 				"push": false,
 				"skipCommit": true,
