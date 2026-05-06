@@ -5,7 +5,7 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-		"directory": "packages/skills/ng"
+		"directory": "packages/skills/frontend/ng"
 	},
 	"author": "",
 	"files": [
