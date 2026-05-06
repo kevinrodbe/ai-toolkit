@@ -52,7 +52,7 @@
 				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-ts:github"],
 				"preset": "conventional",
 				"push": false,
-				"skipCommit": false,
+				"skipCommit": true,
 				"trackDeps": true
 			}
 		}
