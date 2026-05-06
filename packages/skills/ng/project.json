@@ -40,7 +40,7 @@
 		"commit-and-tag": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "VERSION=$(node -p \"require('./{projectRoot}/package.json').version\") && git add -u && git commit -m \"chore({projectName}): release version $VERSION [skip ci]\" --no-verify && (git tag -d {projectName}-$VERSION 2>/dev/null || true) && git tag {projectName}-$VERSION && git push --no-verify && git push origin {projectName}-$VERSION --no-verify"
+				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
 			}
 		},
 		"version": {
