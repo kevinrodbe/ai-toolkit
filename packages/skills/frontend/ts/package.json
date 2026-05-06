@@ -1,7 +1,7 @@
 {
 	"name": "@kevinrodbe/skill-ts",
 	"version": "0.17.2",
-	"description": "Skill TS!!",
+	"description": "Skill TS",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
