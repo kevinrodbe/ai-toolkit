@@ -52,6 +52,8 @@
 				"preset": "conventional",
 				"push": false,
 				"skipCommit": true,
+				"skipProjectChangelog": true,
+				"skipRootChangelog": true,
 				"trackDeps": true
 			}
 		},
