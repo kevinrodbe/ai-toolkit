@@ -148,7 +148,7 @@ jobs:
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             - name: Version Bump
-              run: pnpm nx affected -t version  --parallel=1 --baseBranch=${{needs.setup.outputs.TARGET_BRANCH}} --push=true
+              run: pnpm nx affected -t version  --parallel=1 --baseBranch=${{needs.setup.outputs.TARGET_BRANCH}}
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Build Affected Root Nodes
