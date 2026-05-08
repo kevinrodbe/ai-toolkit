@@ -5,6 +5,7 @@
 	"include": [
 		"commitlint.config.ts",
 		"prettier.config.js",
-		"eslint.config.js"
+		"eslint.config.js",
+		"scripts/*.js",
 	]
 }
