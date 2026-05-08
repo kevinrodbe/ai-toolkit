@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.13.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.12.0...skill-ng-0.13.0) (2026-05-08)
+
+
+### Features
+
+* move skills folders ([a8e9016](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/a8e9016ac758a54ea8e969743eb747ec577c85c7))
+* ng eslint ([30091a5](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/30091a5882f654e2e34e4e0915382d42d58adc51))
+
 ## [0.12.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.11.0...skill-ng-0.12.0) (2026-05-06)
 
 
