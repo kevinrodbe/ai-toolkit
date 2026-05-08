@@ -4,6 +4,12 @@
 	"projectType": "library",
 	"tags": ["type:library", "scope:package", "destination:feed"],
 	"targets": {
+		"commit-and-tag": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+			}
+		},
 		"github": {
 			"executor": "@jscutlery/semver:github",
 			"options": {
@@ -37,12 +43,7 @@
 				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
 			}
 		},
-		"commit-and-tag": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
-			}
-		},
+
 		"version": {
 			"executor": "@jscutlery/semver:version",
 			"options": {
