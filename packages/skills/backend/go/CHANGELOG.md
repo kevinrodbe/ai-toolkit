@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-go-0.2.0...skill-go-0.3.0) (2026-05-08)
+
+
+### Features
+
+* go fix eslint ([06f165d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/06f165de0549e97ae4d1fd6e16280ded14ac603a))
+
 ## [0.2.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-go-0.1.0...skill-go-0.2.0) (2026-05-06)
 
 
