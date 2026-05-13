@@ -23,13 +23,13 @@
 		"test:coverage": "echo no needed",
 		"test:unit": "echo no needed"
 	},
+	"dependencies": {
+		"@rodbe/fn-utils": "1.12.0"
+	},
 	"engines": {
 		"node": ">= 22.0.0",
 		"npm": ">= 10.0.0",
 		"pnpm": ">= 10.0.0"
-	},
-	"dependencies": {
-		"@rodbe/fn-utils": "1.12.0"
 	},
 	"engineStrict": true,
 	"volta": {

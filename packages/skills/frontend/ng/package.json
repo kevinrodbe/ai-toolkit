@@ -8,10 +8,10 @@
 		"directory": "packages/skills/frontend/ng"
 	},
 	"author": "",
+	"type": "module",
 	"files": [
 		"src"
 	],
-	"type": "module",
 	"scripts": {
 		"build": "echo 'Not needed'",
 		"dev": "echo 'Not needed'",
