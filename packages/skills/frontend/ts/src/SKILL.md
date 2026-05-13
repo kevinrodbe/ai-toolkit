@@ -5,7 +5,7 @@ description: >
   Trigger: When writing TypeScript code - types, interfaces, generics.
 license: Apache-2.0
 metadata:
-  author: K-test
+  author: K-test-1
   version: "0.18.0"
 ---
 
