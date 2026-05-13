@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.13.1...skill-ng-1.0.0) (2026-05-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* reorder package.json fields for ng and ts skills
+
+### Features
+
+* reorder package.json fields for ng and ts skills ([6ae333e](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/6ae333e5b105710a42b924db4da82e9c5feb0868))
+
 ## [0.13.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.13.0...skill-ng-0.13.1) (2026-05-13)
 
 ## [0.13.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-0.12.0...skill-ng-0.13.0) (2026-05-08)
