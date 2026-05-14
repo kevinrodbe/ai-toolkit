@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.12.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.11.0...skill-ng-1.12.0) (2026-05-14)
+
+
+### Features
+
+* 3 ([5a0de9d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/5a0de9d5cc6e0d712d0ce215801651a845522b7d))
+
 ## [1.11.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.10.0...skill-ng-1.11.0) (2026-05-14)
 
 
