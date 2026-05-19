@@ -200,6 +200,8 @@ Remove from `angular.json` polyfills: `zone.js` and `zone.js/testing`.
 
 ---
 
+For detailed patterns, see [references/component-patterns.md](references/component-patterns.md).
+
 ## Resources
 
 - https://angular.dev/guide/signals
