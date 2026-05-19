@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.15.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.14.1...skill-ng-1.15.0) (2026-05-19)
+
+
+### Features
+
+* update ng skill ([7f634d7](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/7f634d74f4876f7ea0774f1849a29d1b3133ce6c))
+
 ## [1.14.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.14.0...skill-ng-1.14.1) (2026-05-19)
 
 ## [1.14.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.13.0...skill-ng-1.14.0) (2026-05-14)
