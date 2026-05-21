@@ -1,4 +1,4 @@
-import { existsSync, lstatSync, readdirSync, symlinkSync, unlinkSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, readdirSync, symlinkSync, unlinkSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 
 import chalk from 'chalk';
@@ -8,9 +8,11 @@ import type { AgentPlatform } from '@/lib/platforms.js';
 
 const ensureDir = (dir: string): void => {
 	if (!existsSync(dir)) {
-		readdirSync(dir, { recursive: true });
+		mkdirSync(dir, { recursive: true });
 	}
 };
+
+const findFirstMdFile = (dir: string): string | undefined => readdirSync(dir).find(f => f.endsWith('.md'));
 
 const upsertSymlink = (target: string, linkPath: string): void => {
 	try {
@@ -61,10 +63,19 @@ export const linkAgents = ({
 
 		const destinations = platforms.map(p => join(cwd, p.agentsDir, 'agents'));
 
+		const mdFile = findFirstMdFile(agent.srcDir);
+
+		if (!mdFile) {
+			console.log(chalk.yellow(`    ⚠ No .md file found in ${agent.srcDir}, skipping.`));
+			continue;
+		}
+
+		const mdTarget = join(agent.srcDir, mdFile);
+
 		for (const dest of destinations) {
 			ensureDir(dest);
-			const linkPath = join(dest, agent.shortName);
-			upsertSymlink(agent.srcDir, linkPath);
+			const linkPath = join(dest, `${agent.shortName}.md`);
+			upsertSymlink(mdTarget, linkPath);
 			const rel = relative(cwd, linkPath);
 			console.log(chalk.green(`    ✓ ${rel}`));
 		}

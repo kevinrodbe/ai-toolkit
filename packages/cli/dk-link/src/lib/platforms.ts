@@ -8,4 +8,5 @@ export interface AgentPlatform {
 export const AGENT_PLATFORMS: AgentPlatform[] = [
 	{ agentsDir: '.claude', id: 'claude', label: 'Claude', skillsDir: '.claude' },
 	{ agentsDir: '.github', id: 'github-copilot', label: 'GitHub Copilot', skillsDir: '.agents' },
+	{ agentsDir: '.opencode', id: 'opencode', label: 'OpenCode', skillsDir: '.agents' },
 ];

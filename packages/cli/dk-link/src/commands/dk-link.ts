@@ -32,7 +32,7 @@ const run = async (): Promise<void> => {
 	});
 
 	if (!agents.length) {
-		console.log(chalk.yellow(`No agents (${SCOPE}/agent-*) found in node_modules.`));
+		console.log('  ' + chalk.yellow(`No agents (${SCOPE}/agent-*) found in node_modules.`));
 	} else {
 		const selectedAgents = await checkbox({
 			choices: agents.map(a => ({
@@ -51,6 +51,7 @@ const run = async (): Promise<void> => {
 	if (!skills.length) {
 		console.log(chalk.yellow(`No skills (${SCOPE}/skill-*) found in node_modules.`));
 	} else {
+		console.log('\n\n');
 		const selectedSkills = await checkbox({
 			choices: skills.map(s => ({
 				name: s.packageName,
