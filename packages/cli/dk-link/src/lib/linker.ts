@@ -37,11 +37,10 @@ export const linkSkills = ({
 	for (const skill of skills) {
 		console.log(chalk.bold(`\n  ${skill.packageName}`));
 
-		const destinations: string[] = platforms.map(p => join(cwd, p.skillsDir, 'skills'));
+		const linkPaths = [...new Set(platforms.map(p => join(cwd, p.skillsDir, 'skills', skill.shortName)))];
 
-		for (const dest of destinations) {
-			ensureDir(dest);
-			const linkPath = join(dest, skill.shortName);
+		for (const linkPath of linkPaths) {
+			ensureDir(dirname(linkPath));
 			upsertSymlink(skill.srcDir, linkPath);
 			const rel = relative(cwd, linkPath);
 			console.log(chalk.green(`    ✓ ${rel}/`));
@@ -61,8 +60,6 @@ export const linkAgents = ({
 	for (const agent of agents) {
 		console.log(chalk.bold(`\n  ${agent.packageName}`));
 
-		const destinations = platforms.map(p => join(cwd, p.agentsDir, 'agents'));
-
 		const mdFile = findFirstMdFile(agent.srcDir);
 
 		if (!mdFile) {
@@ -71,10 +68,10 @@ export const linkAgents = ({
 		}
 
 		const mdTarget = join(agent.srcDir, mdFile);
+		const linkPaths = [...new Set(platforms.map(p => join(cwd, p.agentsDir, 'agents', `${agent.shortName}.md`)))];
 
-		for (const dest of destinations) {
-			ensureDir(dest);
-			const linkPath = join(dest, `${agent.shortName}.md`);
+		for (const linkPath of linkPaths) {
+			ensureDir(dirname(linkPath));
 			upsertSymlink(mdTarget, linkPath);
 			const rel = relative(cwd, linkPath);
 			console.log(chalk.green(`    ✓ ${rel}`));
