@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.2.0...dk-link-0.3.0) (2026-05-21)
+
+
+### Features
+
+* add tui for args ([1809e53](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1809e531672ebb8039abe364397b52821621a924))
+
+
+### Bug Fixes
+
+* link agent ([5d8fea5](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/5d8fea5696a9da18e5c99360ad0bf2e355f125b3))
+
 ## [0.2.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.1.1...dk-link-0.2.0) (2026-05-21)
 
 
