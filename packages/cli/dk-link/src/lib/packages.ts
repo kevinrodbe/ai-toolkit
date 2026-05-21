@@ -9,6 +9,7 @@ export interface AvailablePackage {
 export const AVAILABLE_PACKAGES = [
 	'@kevinrodbe/skill-ng',
 	'@kevinrodbe/skill-ts',
+	'@kevinrodbe/skill-go',
 	'@kevinrodbe/agent-code-reviewer',
 ] as const;
 
