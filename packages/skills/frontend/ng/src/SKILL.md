@@ -5,7 +5,7 @@ description: >
   Trigger: When creating Angular components, using signals, or setting up zoneless.
 metadata:
   author: k-test
-  version: "1.15.1"
+  version: "1.15.2"
 ---
 
 ## Standalone Components (always REQUIRED)
