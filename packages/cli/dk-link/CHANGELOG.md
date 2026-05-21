@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.4.0...dk-link-0.5.0) (2026-05-21)
+
+
+### Features
+
+* filter unique paths ([19a502a](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/19a502a6c7d44ebddb036d7c3716996601a04831))
+
 ## [0.4.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.3.0...dk-link-0.4.0) (2026-05-21)
 
 
