@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.1.1...dk-link-0.2.0) (2026-05-21)
+
+
+### Features
+
+* link to agents and links ([30bdfda](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/30bdfda962a08592dcac5a5e2a9532fb60a00711))
+
 ## [0.1.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.1.0...dk-link-0.1.1) (2026-05-19)
 
 ## 0.1.0 (2026-05-19)
