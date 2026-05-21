@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.8.7](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.6...skill-ts-1.8.7) (2026-05-21)
+
 ## [1.8.6](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.5...skill-ts-1.8.6) (2026-05-21)
 
 ## [1.8.5](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.4...skill-ts-1.8.5) (2026-05-21)
