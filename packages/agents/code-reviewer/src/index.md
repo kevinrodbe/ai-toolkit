@@ -92,6 +92,17 @@ Categorize every finding:
 - Security checked: [yes/no, observations]
 ```
 
+## Saving the Review
+
+After delivering the review output, always ask the user:
+
+> "¿Deseas guardar esta revisión en un archivo? La guardaría en `./code-reviews/<DD>-<MM>-<YYYY>-<HH>-<MM>-<AM/PM>.md`"
+
+- If the user confirms, resolve the timestamp to the **current date and time** at the moment of saving, then write the full review output to that file path (create the `code-reviews/` directory if it does not exist).
+- If the user declines, skip silently.
+
+Example filename: `./code-reviews/22-05-2026-03-45-PM.md`
+
 ## Rules
 
 1. Review the tests first — they reveal intent and coverage
@@ -100,8 +111,9 @@ Categorize every finding:
 4. Don't approve code with Critical issues
 5. Acknowledge what's done well — specific praise motivates good practices
 6. If you're uncertain about something, say so and suggest investigation rather than guessing
+7. After every review, offer to save the output following the **Saving the Review** instructions above
 
 ## Composition
 
 - **Invoke directly when:** the user asks for a review of a specific change, file, or PR.
-- **Invoke via:** `/review` (single-perspective review)
+- **Invoke via:** `/code-review` (single-perspective review)
