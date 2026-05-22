@@ -14,12 +14,30 @@ import { detectPackageManager, getInstallCommand } from '@/lib/package-manager.j
 import { AGENT_PLATFORMS } from '@/lib/platforms.js';
 import { resolvePackages } from '@/lib/packages.js';
 import { SCOPE, scanNodeModules } from '@/lib/scanner.js';
+import type { AgentPackage, SkillPackage } from '@/lib/scanner.js';
 
 initEvents();
 
 const cwd = process.cwd();
 
-// ── Commands ───────────────────────────────────────────────────────────────
+const linkPackages = async (agents: AgentPackage[], skills: SkillPackage[]): Promise<void> => {
+	const selectedPlatforms = await checkbox({
+		choices: AGENT_PLATFORMS.map(p => ({ name: p.label, value: p })),
+		message: '¿En qué plataformas deseas linkearlo?',
+	});
+
+	if (agents.length) {
+		console.log(chalk.bold('\nLinking agents...'));
+		linkAgents({ agents, cwd, platforms: selectedPlatforms });
+	}
+
+	if (skills.length) {
+		console.log(chalk.bold('\nLinking skills...'));
+		linkSkills({ cwd, platforms: selectedPlatforms, skills });
+	}
+
+	console.log(chalk.bold.green('\nDone!'));
+};
 
 const runLink = async (): Promise<void> => {
 	const { agents, skills } = scanNodeModules(cwd);
@@ -29,41 +47,29 @@ const runLink = async (): Promise<void> => {
 		return;
 	}
 
-	const selectedPlatforms = await checkbox({
-		choices: AGENT_PLATFORMS.map(p => ({ name: p.label, value: p })),
-		message: '¿En qué agentes deseas instalarlos?',
-	});
+	let selectedAgents: AgentPackage[] = [];
+	let selectedSkills: SkillPackage[] = [];
 
 	if (!agents.length) {
 		console.log('  ' + chalk.yellow(`No agents (${SCOPE}/agent-*) found in node_modules.`));
 	} else {
-		const selectedAgents = await checkbox({
+		selectedAgents = await checkbox({
 			choices: agents.map(a => ({ name: a.packageName, value: a })),
-			message: 'Select agents to install:',
+			message: 'Select agents to link:',
 		});
-
-		if (selectedAgents.length) {
-			console.log(chalk.bold('\nLinking agents...'));
-			linkAgents({ agents: selectedAgents, cwd, platforms: selectedPlatforms });
-		}
 	}
 
 	if (!skills.length) {
 		console.log(chalk.yellow(`No skills (${SCOPE}/skill-*) found in node_modules.`));
 	} else {
 		console.log('\n\n');
-		const selectedSkills = await checkbox({
+		selectedSkills = await checkbox({
 			choices: skills.map(s => ({ name: s.packageName, value: s })),
-			message: 'Select skills to install:',
+			message: 'Select skills to link:',
 		});
-
-		if (selectedSkills.length) {
-			console.log(chalk.bold('\nLinking skills...'));
-			linkSkills({ cwd, platforms: selectedPlatforms, skills: selectedSkills });
-		}
 	}
 
-	console.log(chalk.bold.green('\nDone!'));
+	await linkPackages(selectedAgents, selectedSkills);
 };
 
 const runAdd = async (): Promise<void> => {
@@ -91,14 +97,20 @@ const runAdd = async (): Promise<void> => {
 
 	try {
 		execSync(command, { cwd, stdio: 'inherit' });
-		console.log(chalk.bold.green('\nDone! Run `dk-link link` to link them.'));
 	} catch {
 		console.error(chalk.red('\nInstallation failed. Please check the output above.'));
 		process.exit(1);
 	}
-};
 
-// ── CLI definition ─────────────────────────────────────────────────────────
+	console.log(chalk.bold.green('\nPackages installed!'));
+	console.log(chalk.bold('\nLinking installed packages...\n'));
+
+	const { agents, skills } = scanNodeModules(cwd);
+	const installedAgents = agents.filter(a => packageNames.includes(a.packageName));
+	const installedSkills = skills.filter(s => packageNames.includes(s.packageName));
+
+	await linkPackages(installedAgents, installedSkills);
+};
 
 const args = hideBin(process.argv);
 
