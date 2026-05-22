@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.3](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.5.2...dk-link-0.5.3) (2026-05-22)
+
 ## [0.5.2](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.5.1...dk-link-0.5.2) (2026-05-22)
 
 ## [0.5.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.5.0...dk-link-0.5.1) (2026-05-22)
