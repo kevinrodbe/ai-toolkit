@@ -1,13 +1,14 @@
 {
-	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "skill-ts",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"name": "react-performance",
 	"projectType": "library",
+	"sourceRoot": "packages/skills/react-performance/src",
 	"tags": ["type:library", "scope:package", "destination:feed"],
 	"targets": {
-		"commit-and-tag": {
+		"commit-tag-push": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+				"command": "node scripts/commit-tag-push.js --projectRoot {projectRoot} --projectName {projectName}"
 			}
 		},
 		"github": {
@@ -34,13 +35,13 @@
 		"publish:root": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
+				"command": "pnpm -F @kevinrodbe/skill-react-performance publish --no-git-checks"
 			}
 		},
 		"sync-skill-version": {
 			"executor": "nx:run-commands",
 			"options": {
-				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
+				"command": "node scripts/sync-md-version.js --projectRoot {projectRoot} --capabilityType skill"
 			}
 		},
 		"version": {
@@ -49,7 +50,7 @@
 				"allowEmptyRelease": true,
 				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
 				"noVerify": true,
-				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-ts:github"],
+				"postTargets": ["sync-skill-version", "commit-tag-push", "github"],
 				"preset": "conventional",
 				"push": false,
 				"skipCommit": true,
