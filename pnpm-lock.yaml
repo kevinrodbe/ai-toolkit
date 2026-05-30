@@ -121,6 +121,10 @@ importers:
 
   packages/skills/frontend/ng: {}
 
+  packages/skills/frontend/react-context: {}
+
+  packages/skills/frontend/react-performance: {}
+
   packages/skills/frontend/ts:
     dependencies:
       '@rodbe/fn-utils':

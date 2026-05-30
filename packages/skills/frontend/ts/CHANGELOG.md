@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.10...skill-ts-1.9.0) (2026-05-30)
+
+
+### Features
+
+* add skill react-context + react-performance ([2f5bba4](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/2f5bba4ec01bef9e2ad3b1a5e104ac4d02c626dd))
+
 ## [1.8.10](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.9...skill-ts-1.8.10) (2026-05-22)
 
 ## [1.8.9](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-1.8.8...skill-ts-1.8.9) (2026-05-22)
