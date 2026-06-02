@@ -6,7 +6,7 @@ description: >
 license: Apache-2.0
 metadata:
   author: K-test-1
-  version: "1.9.1"
+  version: "1.9.2"
 ---
 
 ## Const Types Pattern (REQUIRED)
