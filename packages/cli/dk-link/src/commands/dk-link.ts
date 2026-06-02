@@ -12,6 +12,7 @@ import { initEvents } from '@/events/index.js';
 import { linkAgents, linkSkills } from '@/lib/linker.js';
 import { detectPackageManager, getInstallCommand } from '@/lib/package-manager.js';
 import { AGENT_PLATFORMS } from '@/lib/platforms.js';
+import type { AgentPlatform } from '@/lib/platforms.js';
 import { resolvePackages } from '@/lib/packages.js';
 import { SCOPE, scanNodeModules } from '@/lib/scanner.js';
 import type { AgentPackage, SkillPackage } from '@/lib/scanner.js';
@@ -20,11 +21,31 @@ initEvents();
 
 const cwd = process.cwd();
 
-const linkPackages = async (agents: AgentPackage[], skills: SkillPackage[]): Promise<void> => {
-	const selectedPlatforms = await checkbox({
+interface LinkArgv {
+	agents?: string;
+	all?: boolean;
+	platforms?: string;
+	skills?: string;
+}
+
+const resolvePlatforms = async (platformArg?: string): Promise<AgentPlatform[]> => {
+	if (platformArg) {
+		const ids = platformArg.split(',').map(s => s.trim());
+		const selected = AGENT_PLATFORMS.filter(p => ids.includes(p.id));
+		if (!selected.length) {
+			console.error(chalk.red(`\nNo valid platforms. Valid IDs: ${AGENT_PLATFORMS.map(p => p.id).join(', ')}`));
+			process.exit(1);
+		}
+		return selected;
+	}
+	return checkbox({
 		choices: AGENT_PLATFORMS.map(p => ({ name: p.label, value: p })),
 		message: '¿En qué plataformas deseas linkearlo?',
 	});
+};
+
+const linkPackages = async (agents: AgentPackage[], skills: SkillPackage[], platformArg?: string): Promise<void> => {
+	const selectedPlatforms = await resolvePlatforms(platformArg);
 
 	if (agents.length) {
 		console.log(chalk.bold('\nLinking agents...'));
@@ -39,7 +60,7 @@ const linkPackages = async (agents: AgentPackage[], skills: SkillPackage[]): Pro
 	console.log(chalk.bold.green('\nDone!'));
 };
 
-const runLink = async (): Promise<void> => {
+const runLink = async (argv: LinkArgv = {}): Promise<void> => {
 	const { agents, skills } = scanNodeModules(cwd);
 
 	if (agents.length === 0 && skills.length === 0) {
@@ -52,6 +73,11 @@ const runLink = async (): Promise<void> => {
 
 	if (!agents.length) {
 		console.log('  ' + chalk.yellow(`No agents (${SCOPE}/agent-*) found in node_modules.`));
+	} else if (argv.all) {
+		selectedAgents = agents;
+	} else if (argv.agents) {
+		const names = argv.agents.split(',').map(s => s.trim());
+		selectedAgents = agents.filter(a => names.includes(a.packageName) || names.includes(a.shortName));
 	} else {
 		selectedAgents = await checkbox({
 			choices: agents.map(a => ({ name: a.packageName, value: a })),
@@ -61,6 +87,11 @@ const runLink = async (): Promise<void> => {
 
 	if (!skills.length) {
 		console.log(chalk.yellow(`No skills (${SCOPE}/skill-*) found in node_modules.`));
+	} else if (argv.all) {
+		selectedSkills = skills;
+	} else if (argv.skills) {
+		const names = argv.skills.split(',').map(s => s.trim());
+		selectedSkills = skills.filter(s => names.includes(s.packageName) || names.includes(s.shortName));
 	} else {
 		console.log('\n\n');
 		selectedSkills = await checkbox({
@@ -69,7 +100,7 @@ const runLink = async (): Promise<void> => {
 		});
 	}
 
-	await linkPackages(selectedAgents, selectedSkills);
+	await linkPackages(selectedAgents, selectedSkills, argv.platforms);
 };
 
 const runAdd = async (): Promise<void> => {
@@ -132,7 +163,31 @@ if (args.length === 0) {
 	await yargs(args)
 		.scriptName('dk-link')
 		.usage('$0 <command>')
-		.command('link', 'Link installed agents and skills to AI platforms', {}, runLink)
+		.command(
+			'link',
+			'Link installed agents and skills to AI platforms',
+			yargs =>
+				yargs
+					.option('platforms', {
+						alias: 'p',
+						describe: `Comma-separated platform IDs (${AGENT_PLATFORMS.map(p => p.id).join(', ')})`,
+						type: 'string',
+					})
+					.option('all', {
+						alias: 'a',
+						describe: 'Link all discovered agents and skills',
+						type: 'boolean',
+					})
+					.option('agents', {
+						describe: 'Comma-separated agent package names or short names to link',
+						type: 'string',
+					})
+					.option('skills', {
+						describe: 'Comma-separated skill package names or short names to link',
+						type: 'string',
+					}),
+			argv => runLink(argv)
+		)
 		.command('add', 'Browse and install available agents and skills', {}, runAdd)
 		.strict()
 		.help()
