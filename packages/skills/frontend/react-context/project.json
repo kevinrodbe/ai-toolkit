@@ -1,61 +1,61 @@
 {
-	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-	"name": "react-context",
-	"projectType": "library",
-	"sourceRoot": "packages/skills/react-context/src",
-	"tags": ["type:library", "scope:package", "destination:feed"],
-	"targets": {
-		"commit-tag-push": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/commit-tag-push.js --projectRoot {projectRoot} --projectName {projectName}"
-			}
-		},
-		"github": {
-			"executor": "@jscutlery/semver:github",
-			"options": {
-				"notes": "${notes}",
-				"tag": "${tag}"
-			}
-		},
-		"prerelease": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"noVerify": true,
-				"preset": "conventional",
-				"push": false,
-				"releaseAs": "prerelease",
-				"skipCommit": true,
-				"skipProjectChangelog": true,
-				"skipRootChangelog": true,
-				"trackDeps": true
-			}
-		},
-		"publish:root": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "pnpm -F @kevinrodbe/skill-react-context publish --no-git-checks"
-			}
-		},
-		"sync-skill-version": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/sync-md-version.js --projectRoot {projectRoot} --capabilityType skill"
-			}
-		},
-		"version": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-				"noVerify": true,
-				"postTargets": ["sync-skill-version", "commit-tag-push", "github"],
-				"preset": "conventional",
-				"push": false,
-				"skipCommit": true,
-				"trackDeps": true
-			}
-		}
-	}
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "react-context",
+  "projectType": "library",
+  "sourceRoot": "packages/skills/react-context/src",
+  "tags": ["type:library", "scope:package", "destination:feed"],
+  "targets": {
+    "commit-tag-push": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/commit-tag-push.js --projectRoot {projectRoot} --projectName {projectName}"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "notes": "${notes}",
+        "tag": "${tag}"
+      }
+    },
+    "prerelease": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "noVerify": true,
+        "preset": "conventional",
+        "push": false,
+        "releaseAs": "prerelease",
+        "skipCommit": true,
+        "skipProjectChangelog": true,
+        "skipRootChangelog": true,
+        "trackDeps": true
+      }
+    },
+    "publish:root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm -F @kevinrodbe/skill-react-context publish --no-git-checks"
+      }
+    },
+    "sync-skill-version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/sync-md-version.js --projectRoot {projectRoot} --capabilityType skill"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
+        "noVerify": true,
+        "postTargets": ["sync-skill-version", "commit-tag-push", "github"],
+        "preset": "conventional",
+        "push": false,
+        "skipCommit": true,
+        "trackDeps": true
+      }
+    }
+  }
 }

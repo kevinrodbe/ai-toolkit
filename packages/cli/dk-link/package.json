@@ -1,56 +1,56 @@
 {
-	"name": "@kevinrodbe/dk-link",
-	"version": "0.8.0",
-	"description": "App CLI",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-		"directory": "packages/cli/dk-link"
-	},
-	"author": "",
-	"type": "module",
-	"bin": {
-		"dk-link": "./dist/commands/dk-link.js"
-	},
-	"files": [
-		"src"
-	],
-	"scripts": {
-		"build": "tsdown",
-		"dev": "echo no needed",
-		"lint": "concurrently -n types,code -c \"auto\" \"pnpm run lint:types\" \"pnpm run lint:code\"",
-		"lint:code": "eslint . --cache --cache-strategy content",
-		"lint:code:fix": "eslint . --cache --cache-strategy content --fix",
-		"lint:fix": "concurrently -n lint-code -c \"auto\" \"pnpm run lint:code:fix\"",
-		"lint:types": "tsc --noEmit --incremental",
-		"test:coverage": "echo no needed",
-		"test:unit": "echo no needed"
-	},
-	"dependencies": {
-		"@inquirer/prompts": "^7.10.1",
-		"chalk": "^5.4.1",
-		"yargs": "^17.7.2"
-	},
-	"devDependencies": {
-		"@types/node": "^25.0.3",
-		"@types/yargs": "^17.0.33",
-		"@vitest/coverage-v8": "^3.0.6",
-		"tsdown": "^0.22.0",
-		"typescript": "^5.9.3",
-		"vitest": "^3.0.6"
-	},
-	"packageManager": "pnpm@10.12.1",
-	"engines": {
-		"node": ">= 22.0.0",
-		"npm": ">= 10.0.0",
-		"pnpm": ">= 10.0.0"
-	},
-	"engineStrict": true,
-	"volta": {
-		"node": "22.18.0",
-		"pnpm": "10.12.1"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
-	}
+  "name": "@kevinrodbe/dk-link",
+  "version": "0.8.0",
+  "description": "App CLI",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
+    "directory": "packages/cli/dk-link"
+  },
+  "author": "",
+  "type": "module",
+  "bin": {
+    "dk-link": "./dist/commands/dk-link.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "echo no needed",
+    "lint": "concurrently -n types,code -c \"auto\" \"pnpm run lint:types\" \"pnpm run lint:code\"",
+    "lint:code": "eslint . --cache --cache-strategy content",
+    "lint:code:fix": "eslint . --cache --cache-strategy content --fix",
+    "lint:fix": "concurrently -n lint-code -c \"auto\" \"pnpm run lint:code:fix\"",
+    "lint:types": "tsc --noEmit --incremental",
+    "test:coverage": "echo no needed",
+    "test:unit": "echo no needed"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.10.1",
+    "chalk": "^5.4.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@types/yargs": "^17.0.33",
+    "@vitest/coverage-v8": "^3.0.6",
+    "tsdown": "^0.22.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.6"
+  },
+  "packageManager": "pnpm@10.12.1",
+  "engines": {
+    "node": ">= 22.0.0",
+    "npm": ">= 10.0.0",
+    "pnpm": ">= 10.0.0"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "22.18.0",
+    "pnpm": "10.12.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

@@ -1,42 +1,42 @@
 {
-	"name": "@kevinrodbe/skill-ts",
-	"version": "1.9.3",
-	"description": "Skill TS",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-		"directory": "packages/skills/frontend/ts"
-	},
-	"author": "",
-	"type": "module",
-	"files": [
-		"src"
-	],
-	"scripts": {
-		"build": "echo no needed",
-		"dev": "echo no needed",
-		"lint": "echo no needed",
-		"lint:code": "echo no needed",
-		"lint:code:fix": "echo no needed",
-		"lint:fix": "echo no needed",
-		"lint:types": "echo no needed",
-		"test:coverage": "echo no needed",
-		"test:unit": "echo no needed"
-	},
-	"dependencies": {
-		"@rodbe/fn-utils": "1.12.0"
-	},
-	"engines": {
-		"node": ">= 22.0.0",
-		"npm": ">= 10.0.0",
-		"pnpm": ">= 10.0.0"
-	},
-	"engineStrict": true,
-	"volta": {
-		"node": "22.18.0",
-		"pnpm": "10.12.1"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
-	}
+  "name": "@kevinrodbe/skill-ts",
+  "version": "1.9.3",
+  "description": "Skill TS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
+    "directory": "packages/skills/frontend/ts"
+  },
+  "author": "",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo no needed",
+    "dev": "echo no needed",
+    "lint": "echo no needed",
+    "lint:code": "echo no needed",
+    "lint:code:fix": "echo no needed",
+    "lint:fix": "echo no needed",
+    "lint:types": "echo no needed",
+    "test:coverage": "echo no needed",
+    "test:unit": "echo no needed"
+  },
+  "dependencies": {
+    "@rodbe/fn-utils": "1.12.0"
+  },
+  "engines": {
+    "node": ">= 22.0.0",
+    "npm": ">= 10.0.0",
+    "pnpm": ">= 10.0.0"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "22.18.0",
+    "pnpm": "10.12.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

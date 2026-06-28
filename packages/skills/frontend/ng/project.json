@@ -1,61 +1,61 @@
 {
-	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "skill-ng",
-	"projectType": "library",
-	"tags": ["type:library", "scope:package", "destination:feed"],
-	"targets": {
-		"commit-and-tag": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
-			}
-		},
-		"github": {
-			"executor": "@jscutlery/semver:github",
-			"options": {
-				"notes": "${notes}",
-				"tag": "${tag}"
-			}
-		},
-		"prerelease": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"noVerify": true,
-				"preset": "conventional",
-				"push": false,
-				"releaseAs": "prerelease",
-				"skipCommit": true,
-				"skipProjectChangelog": true,
-				"skipRootChangelog": true,
-				"trackDeps": true
-			}
-		},
-		"publish:root": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "pnpm -F skill-ng publish --no-git-checks"
-			}
-		},
-		"sync-skill-version": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
-			}
-		},
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "skill-ng",
+  "projectType": "library",
+  "tags": ["type:library", "scope:package", "destination:feed"],
+  "targets": {
+    "commit-and-tag": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "notes": "${notes}",
+        "tag": "${tag}"
+      }
+    },
+    "prerelease": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "noVerify": true,
+        "preset": "conventional",
+        "push": false,
+        "releaseAs": "prerelease",
+        "skipCommit": true,
+        "skipProjectChangelog": true,
+        "skipRootChangelog": true,
+        "trackDeps": true
+      }
+    },
+    "publish:root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm -F skill-ng publish --no-git-checks"
+      }
+    },
+    "sync-skill-version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
+      }
+    },
 
-		"version": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
-				"noVerify": true,
-				"postTargets": ["sync-skill-version", "commit-and-tag", "skill-ng:github"],
-				"preset": "conventional",
-				"push": false,
-				"skipCommit": true,
-				"trackDeps": true
-			}
-		}
-	}
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
+        "noVerify": true,
+        "postTargets": ["sync-skill-version", "commit-and-tag", "skill-ng:github"],
+        "preset": "conventional",
+        "push": false,
+        "skipCommit": true,
+        "trackDeps": true
+      }
+    }
+  }
 }

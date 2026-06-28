@@ -8,12 +8,12 @@ import chalk from 'chalk';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { initEvents } from '@/events/index.js';
-import { linkAgents, linkSkills } from '@/lib/linker.js';
-import { detectPackageManager, getInstallCommand } from '@/lib/package-manager.js';
-import { AGENT_PLATFORMS, type AgentPlatform } from '@/lib/platforms.js';
-import { resolvePackages } from '@/lib/packages.js';
-import { type AgentPackage, SCOPE, type SkillPackage, scanNodeModules } from '@/lib/scanner.js';
+import { initEvents } from '@/events';
+import { linkAgents, linkSkills } from '@/lib/linker';
+import { detectPackageManager, getInstallCommand } from '@/lib/package-manager';
+import { AGENT_PLATFORMS, type AgentPlatform } from '@/lib/platforms';
+import { resolvePackages } from '@/lib/packages';
+import { type AgentPackage, SCOPE, type SkillPackage, scanNodeModules } from '@/lib/scanner';
 
 initEvents();
 

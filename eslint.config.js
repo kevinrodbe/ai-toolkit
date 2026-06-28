@@ -56,7 +56,19 @@ export default defineConfig([
       jsRules,
       tsRules,
     ],
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: ['**/*.{ts,tsx,jsx}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['eslint.config.js'],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+  {
+    extends: [jsRules, eslint.configs.recommended],
+    files: ['**/*.{js}'],
     languageOptions: {
       parserOptions: {
         projectService: {
@@ -77,7 +89,7 @@ export default defineConfig([
     files: ['**/*.{ts,tsx,js,jsx}'],
   },
   {
-    files: ['**/{layout,page,not-found}.tsx', 'panda.config.ts'],
+    files: ['**/{layout,page,not-found}.tsx', 'panda.config.ts', '**/tsdown.config.ts'],
     rules: {
       'no-restricted-exports': [
         'error',

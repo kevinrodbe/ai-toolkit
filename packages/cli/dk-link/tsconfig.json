@@ -1,11 +1,11 @@
 {
-	"compilerOptions": {
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"types": ["node"]
-	},
-	"exclude": ["node_modules", "dist"],
-	"extends": "../../../tsconfig.no-dom.lib.json",
-	"include": ["src", "vitest.config.ts", "tsdown.config.ts"]
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["node"]
+  },
+  "exclude": ["node_modules", "dist"],
+  "extends": "../../../tsconfig.no-dom.lib.json",
+  "include": ["src", "vitest.config.ts", "tsdown.config.ts"]
 }

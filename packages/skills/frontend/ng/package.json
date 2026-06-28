@@ -1,39 +1,39 @@
 {
-	"name": "@kevinrodbe/skill-ng",
-	"version": "1.15.11",
-	"description": "Skill ng!",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-		"directory": "packages/skills/frontend/ng"
-	},
-	"author": "",
-	"type": "module",
-	"files": [
-		"src"
-	],
-	"scripts": {
-		"build": "echo 'Not needed'",
-		"dev": "echo 'Not needed'",
-		"lint": "echo no needed",
-		"lint:code": "echo 'Not needed'",
-		"lint:code:fix": "echo 'Not needed'",
-		"lint:fix": "echo 'Not needed'",
-		"lint:types": "echo 'Not needed'",
-		"test:coverage": "echo no needed",
-		"test:unit": "echo no needed"
-	},
-	"engines": {
-		"node": ">= 22.0.0",
-		"npm": ">= 10.0.0",
-		"pnpm": ">= 10.0.0"
-	},
-	"engineStrict": true,
-	"volta": {
-		"node": "22.18.0",
-		"pnpm": "10.12.1"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
-	}
+  "name": "@kevinrodbe/skill-ng",
+  "version": "1.15.11",
+  "description": "Skill ng!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
+    "directory": "packages/skills/frontend/ng"
+  },
+  "author": "",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo 'Not needed'",
+    "dev": "echo 'Not needed'",
+    "lint": "echo no needed",
+    "lint:code": "echo 'Not needed'",
+    "lint:code:fix": "echo 'Not needed'",
+    "lint:fix": "echo 'Not needed'",
+    "lint:types": "echo 'Not needed'",
+    "test:coverage": "echo no needed",
+    "test:unit": "echo no needed"
+  },
+  "engines": {
+    "node": ">= 22.0.0",
+    "npm": ">= 10.0.0",
+    "pnpm": ">= 10.0.0"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "22.18.0",
+    "pnpm": "10.12.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

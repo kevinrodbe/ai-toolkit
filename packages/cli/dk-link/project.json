@@ -1,48 +1,48 @@
 {
-	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "dk-link",
-	"projectType": "library",
-	"tags": ["type:cli", "scope:package", "destination:feed"],
-	"targets": {
-		"github": {
-			"executor": "@jscutlery/semver:github",
-			"options": {
-				"notes": "${notes}",
-				"tag": "${tag}"
-			}
-		},
-		"prerelease": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"noVerify": true,
-				"preset": "conventional",
-				"push": false,
-				"releaseAs": "prerelease",
-				"skipCommit": true,
-				"skipProjectChangelog": true,
-				"skipRootChangelog": true,
-				"trackDeps": true
-			}
-		},
-		"publish:root": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "pnpm -F @kevinrodbe/dk-link publish --no-git-checks"
-			}
-		},
-		"version": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-				"noVerify": true,
-				"postTargets": ["github"],
-				"preset": "conventional",
-				"push": true,
-				"skipCommit": false,
-				"trackDeps": true
-			}
-		}
-	}
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "dk-link",
+  "projectType": "library",
+  "tags": ["type:cli", "scope:package", "destination:feed"],
+  "targets": {
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "notes": "${notes}",
+        "tag": "${tag}"
+      }
+    },
+    "prerelease": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "noVerify": true,
+        "preset": "conventional",
+        "push": false,
+        "releaseAs": "prerelease",
+        "skipCommit": true,
+        "skipProjectChangelog": true,
+        "skipRootChangelog": true,
+        "trackDeps": true
+      }
+    },
+    "publish:root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm -F @kevinrodbe/dk-link publish --no-git-checks"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
+        "noVerify": true,
+        "postTargets": ["github"],
+        "preset": "conventional",
+        "push": true,
+        "skipCommit": false,
+        "trackDeps": true
+      }
+    }
+  }
 }

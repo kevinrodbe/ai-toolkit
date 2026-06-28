@@ -4,54 +4,54 @@ import { join } from 'node:path';
 export const SCOPE = '@kevinrodbe';
 
 export interface SkillPackage {
-	name: string; // skill-foo
-	shortName: string; // foo
-	packageName: string; // @kevinrodbe/skill-foo
-	srcDir: string;
+  name: string; // skill-foo
+  packageName: string; // @kevinrodbe/skill-foo
+  shortName: string; // foo
+  srcDir: string;
 }
 
 export interface AgentPackage {
-	name: string;
-	shortName: string;
-	packageName: string;
-	srcDir: string;
+  name: string;
+  packageName: string;
+  shortName: string;
+  srcDir: string;
 }
 
 interface ScanResult {
-	skills: SkillPackage[];
-	agents: AgentPackage[];
+  agents: Array<AgentPackage>;
+  skills: Array<SkillPackage>;
 }
 
 export const scanNodeModules = (cwd: string): ScanResult => {
-	const scopeDir = join(cwd, 'node_modules', SCOPE);
+  const scopeDir = join(cwd, 'node_modules', SCOPE);
 
-	if (!existsSync(scopeDir)) {
-		return { agents: [], skills: [] };
-	}
+  if (!existsSync(scopeDir)) {
+    return { agents: [], skills: [] };
+  }
 
-	const packages = readdirSync(scopeDir);
-	const skills: SkillPackage[] = [];
-	const agents: AgentPackage[] = [];
+  const packages = readdirSync(scopeDir);
+  const skills: Array<SkillPackage> = [];
+  const agents: Array<AgentPackage> = [];
 
-	for (const pkg of packages) {
-		if (pkg.startsWith('skill-')) {
-			const srcDir = join(scopeDir, pkg, 'src');
+  for (const pkg of packages) {
+    if (pkg.startsWith('skill-')) {
+      const srcDir = join(scopeDir, pkg, 'src');
 
-			if (existsSync(srcDir)) {
-				const shortName = pkg.replace(/^skill-/, '');
+      if (existsSync(srcDir)) {
+        const shortName = pkg.replace(/^skill-/, '');
 
-				skills.push({ name: pkg, packageName: `${SCOPE}/${pkg}`, shortName, srcDir });
-			}
-		} else if (pkg.startsWith('agent-')) {
-			const srcDir = join(scopeDir, pkg, 'src');
+        skills.push({ name: pkg, packageName: `${SCOPE}/${pkg}`, shortName, srcDir });
+      }
+    } else if (pkg.startsWith('agent-')) {
+      const srcDir = join(scopeDir, pkg, 'src');
 
-			if (existsSync(srcDir)) {
-				const shortName = pkg.replace(/^agent-/, '');
+      if (existsSync(srcDir)) {
+        const shortName = pkg.replace(/^agent-/, '');
 
-				agents.push({ name: pkg, packageName: `${SCOPE}/${pkg}`, shortName, srcDir });
-			}
-		}
-	}
+        agents.push({ name: pkg, packageName: `${SCOPE}/${pkg}`, shortName, srcDir });
+      }
+    }
+  }
 
-	return { agents, skills };
+  return { agents, skills };
 };

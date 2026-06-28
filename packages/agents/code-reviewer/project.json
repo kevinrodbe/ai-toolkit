@@ -1,54 +1,54 @@
 {
-	"$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-	"name": "agent-code-reviewer",
-	"projectType": "library",
-	"tags": ["type:library", "scope:package", "destination:feed"],
-	"targets": {
-		"commit-and-tag": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
-			}
-		},
-		"github": {
-			"executor": "@jscutlery/semver:github",
-			"options": {
-				"notes": "${notes}",
-				"tag": "${tag}"
-			}
-		},
-		"prerelease": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"noVerify": true,
-				"preset": "conventional",
-				"push": false,
-				"releaseAs": "prerelease",
-				"skipCommit": true,
-				"skipProjectChangelog": true,
-				"skipRootChangelog": true,
-				"trackDeps": true
-			}
-		},
-		"publish:root": {
-			"executor": "nx:run-commands",
-			"options": {
-				"command": "pnpm -F @kevinrodbe/agent-code-reviewer publish --no-git-checks"
-			}
-		},
-		"version": {
-			"executor": "@jscutlery/semver:version",
-			"options": {
-				"allowEmptyRelease": true,
-				"commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-				"noVerify": true,
-				"postTargets": ["github"],
-				"preset": "conventional",
-				"push": true,
-				"skipCommit": false,
-				"trackDeps": true
-			}
-		}
-	}
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "agent-code-reviewer",
+  "projectType": "library",
+  "tags": ["type:library", "scope:package", "destination:feed"],
+  "targets": {
+    "commit-and-tag": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "notes": "${notes}",
+        "tag": "${tag}"
+      }
+    },
+    "prerelease": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "noVerify": true,
+        "preset": "conventional",
+        "push": false,
+        "releaseAs": "prerelease",
+        "skipCommit": true,
+        "skipProjectChangelog": true,
+        "skipRootChangelog": true,
+        "trackDeps": true
+      }
+    },
+    "publish:root": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm -F @kevinrodbe/agent-code-reviewer publish --no-git-checks"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "allowEmptyRelease": true,
+        "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
+        "noVerify": true,
+        "postTargets": ["github"],
+        "preset": "conventional",
+        "push": true,
+        "skipCommit": false,
+        "trackDeps": true
+      }
+    }
+  }
 }
