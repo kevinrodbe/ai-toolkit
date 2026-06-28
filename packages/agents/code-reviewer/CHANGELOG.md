@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.4](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.3...agent-code-reviewer-0.3.4) (2026-06-28)
+
 ## [0.3.3](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.2...agent-code-reviewer-0.3.3) (2026-06-02)
 
 ## [0.3.2](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.1...agent-code-reviewer-0.3.2) (2026-05-30)
