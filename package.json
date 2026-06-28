@@ -1,55 +1,62 @@
 {
-	"name": "monorepo",
-	"version": "1.0.0",
-	"private": true,
-	"description": "monorepo",
-	"keywords": [
-		"system",
-		"workspace"
-	],
-	"type": "module",
-	"scripts": {
-		"build:all": "nx run-many --target=build",
-		"lint:all": "nx run-many --target=lint",
-		"lint:all:fix": "nx run-many --target=lint:fix",
-		"prepare": "husky",
-		"test:unit": "nx run-many --target=test:unit",
-		"summary": "node scripts/summary.js"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "20.0.0",
-		"@commitlint/config-conventional": "20.0.0",
-		"@commitlint/format": "20.0.0",
-		"@commitlint/types": "20.0.0",
-		"@eslint/js": "^9.32.0",
-		"@eslint/json": "^0.10.0",
-		"@jscutlery/semver": "^5.8.1",
-		"@nx/eslint-plugin": "21.1.2",
-		"@nx/plugin": "21.1.2",
-		"@swc-node/register": "^1.11.1",
-		"@swc/core": "^1.15.24",
-		"@types/node": "^20.19.39",
-		"@typescript-eslint/eslint-plugin": "^7.18.0",
-		"eslint": "^9.39.4",
-		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-package-json": "^0.26.4",
-		"eslint-plugin-prettier": "^5.5.5",
-		"husky": "^9.1.7",
-		"nx": "21.1.2",
-		"prettier": "^3.8.2",
-		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.58.1",
-		"vitest": "^3.2.4"
-	},
-	"packageManager": "pnpm@10.12.1",
-	"engines": {
-		"node": ">= 22.0.0",
-		"npm": ">= 10.0.0",
-		"pnpm": ">= 10.0.0"
-	},
-	"engineStrict": true,
-	"volta": {
-		"node": "22.18.0",
-		"pnpm": "10.12.1"
-	}
+  "name": "@ai-toolkit/root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Skills and Agents",
+  "keywords": [
+    "system",
+    "workspace"
+  ],
+  "license": "MIT",
+  "author": "Rodbe",
+  "type": "module",
+  "scripts": {
+    "build:all": "nx run-many --target=build",
+    "lint:all": "nx run-many --target=lint",
+    "lint:all:fix": "nx run-many --target=lint:fix",
+    "prepare": "husky",
+    "summary": "node scripts/summary.js",
+    "test:unit": "nx run-many --target=test:unit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.0.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "@commitlint/format": "20.0.0",
+    "@commitlint/types": "20.0.0",
+    "@eslint/js": "^9.32.0",
+    "@eslint/json": "^0.10.0",
+    "@jscutlery/semver": "^5.8.1",
+    "@nx/eslint-plugin": "21.1.2",
+    "@nx/plugin": "21.1.2",
+    "@rodbe/eslint-config": "^1.4.0",
+    "@rodbe/prettier-config": "^1.5.0",
+    "@rodbe/tsconfig": "^1.5.0",
+    "@swc-node/register": "^1.11.1",
+    "@swc/core": "^1.15.24",
+    "@types/node": "^26.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-package-json": "^0.26.4",
+    "eslint-plugin-prettier": "^5.5.5",
+    "husky": "^9.1.7",
+    "nx": "21.1.2",
+    "prettier": "^3.8.2",
+    "prettier-plugin-curly": "^0.4.1",
+    "prettier-plugin-packagejson": "^2.5.20",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.58.1",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "pnpm@10.12.1",
+  "engines": {
+    "node": ">= 22.0.0",
+    "npm": ">= 10.0.0",
+    "pnpm": ">= 10.0.0"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "22.18.0",
+    "pnpm": "10.12.1"
+  }
 }

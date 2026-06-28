@@ -1,6 +1,12 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"exclude": ["node_modules"],
-	"extends": "./tsconfig.base.json",
-	"include": ["commitlint.config.ts", "prettier.config.js", "eslint.config.js", "scripts/*.js", "tsdown.config.ts"]
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.no-dom.lib.json",
+  "include": [
+    "commitlint.config.ts",
+    "prettier.config.js",
+    "eslint.config.js",
+    "scripts/*.js",
+    "tsdown.config.ts"
+  ]
 }

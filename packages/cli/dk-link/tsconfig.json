@@ -6,6 +6,6 @@
 		"types": ["node"]
 	},
 	"exclude": ["node_modules", "dist"],
-	"extends": "../../../tsconfig.base.json",
+	"extends": "../../../tsconfig.no-dom.lib.json",
 	"include": ["src", "vitest.config.ts", "tsdown.config.ts"]
 }

@@ -4,9 +4,9 @@ import { join } from 'node:path';
 export const SCOPE = '@kevinrodbe';
 
 export interface SkillPackage {
-	name: string;
-	shortName: string;
-	packageName: string;
+	name: string; // skill-foo
+	shortName: string; // foo
+	packageName: string; // @kevinrodbe/skill-foo
 	srcDir: string;
 }
 
