@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.8.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.7.0...dk-link-0.8.0) (2026-06-28)
+
+
+### Features
+
+* integrate shareable config ([9470efb](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/9470efbac18c5e2d0b60d9de5058ca90760cdd4c))
+
 ## [0.7.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.6.1...dk-link-0.7.0) (2026-06-02)
 
 
