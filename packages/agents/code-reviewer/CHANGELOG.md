@@ -2,6 +2,43 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## 0.0.0 (2026-06-29)
+
+* feat!: set nx sha + trigger version ([36e158e](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/36e158e))
+* feat!: trigger version ([28b9167](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/28b9167))
+* feat!: trigger version ([866e5e2](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/866e5e2))
+* feat!: trigger version ([1c6ac4c](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1c6ac4c))
+* chore(agent-code-reviewer): release version 0.1.0 [skip ci] ([6cded4d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/6cded4d))
+* chore(agent-code-reviewer): release version 0.1.1 [skip ci] ([4d80596](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/4d80596))
+* chore(agent-code-reviewer): release version 0.1.2 [skip ci] ([e912ec7](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/e912ec7))
+* chore(agent-code-reviewer): release version 0.1.3 [skip ci] ([e8e3e2d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/e8e3e2d))
+* chore(agent-code-reviewer): release version 0.1.4 [skip ci] ([708d7bf](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/708d7bf))
+* chore(agent-code-reviewer): release version 0.2.0 [skip ci] ([f14405d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/f14405d))
+* chore(agent-code-reviewer): release version 0.3.0 [skip ci] ([154d28b](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/154d28b))
+* chore(agent-code-reviewer): release version 0.3.1 [skip ci] ([8bac1bb](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8bac1bb))
+* chore(agent-code-reviewer): release version 0.3.2 [skip ci] ([8b8a07f](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8b8a07f))
+* chore(agent-code-reviewer): release version 0.3.3 [skip ci] ([d784e82](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/d784e82))
+* chore(agent-code-reviewer): release version 0.3.4 [skip ci] ([969a044](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/969a044))
+* chore(agent-code-reviewer): release version 0.3.5 [skip ci] ([5ef513d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/5ef513d))
+* chore(dk-link): release version 0.5.3 [skip ci] ([b22aaf2](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/b22aaf2))
+* chore(dk-link): release version 0.6.1 [skip ci] ([d60ef90](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/d60ef90))
+* chore(dk-link): release version 0.8.0 [skip ci] ([fce92b4](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/fce92b4))
+* test: 💍 add author ([28c5c78](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/28c5c78))
+* test: 💍 add license ([2bc4112](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/2bc4112))
+* feat: add agent code-reviewer ([f26e7ab](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/f26e7ab))
+* feat: add save-review ([acf64fd](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/acf64fd))
+* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
+* feat: update agent review ([106e4c2](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/106e4c2))
+* style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
+
+
+### BREAKING CHANGE
+
+* 🧨 generate major version
+* 🧨 generate major version
+* version bump trigger
+
+
 ## 0.3.0 (2026-06-29)
 
 * feat!: set nx sha + trigger version ([36e158e](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/36e158e))
