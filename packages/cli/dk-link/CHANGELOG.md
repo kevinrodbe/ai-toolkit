@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.0.0...dk-link-0.0.1) (2026-06-29)
+
 ## 0.0.0 (2026-06-29)
 
 * feat: add skill-go ([e78e6ab](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/e78e6ab))
