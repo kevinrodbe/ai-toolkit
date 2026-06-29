@@ -1,173 +1,171 @@
 name: deploying
 
 on:
-    push:
-        branches:
-            - develop
-        tags-ignore:
-            - '**'
+  push:
+    branches:
+      - develop
+    tags-ignore:
+      - '**'
 env:
-    HUSKY: 0
+  HUSKY: 0
 
 jobs:
-    setup:
-        name: Setup Environment
-        runs-on: ubuntu-latest
-        outputs:
-            MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}
-            TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
-            AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}
-        steps:
-            - name: Install O.S Dependencies
-              run: sudo apt-get update && sudo apt-get install -y jq
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    outputs:
+      MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}
+      TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+      AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}
+    steps:
+      - name: Install O.S Dependencies
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-            - name: Get Max Jobs Count
-              id: get_max_jobs_count
-              run: echo "MAX_JOBS_COUNT=$(( $(nproc) * 2 ))" >> $GITHUB_OUTPUT
+      - name: Get Max Jobs Count
+        id: get_max_jobs_count
+        run: echo "MAX_JOBS_COUNT=$(( $(nproc) * 2 ))" >> $GITHUB_OUTPUT
 
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-            - name: Setup PNPM
-              uses: pnpm/action-setup@v2
-              with:
-                  version: 10
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
 
-            - name: Setup Node.js Cache
-              uses: actions/setup-node@v3
-              with:
-                  registry-url: https://npm.pkg.github.com
-                  node-version: lts/*
-                  cache: 'pnpm'
+      - name: Setup Node.js Cache
+        uses: actions/setup-node@v3
+        with:
+          registry-url: https://npm.pkg.github.com
+          node-version: lts/*
+          cache: 'pnpm'
 
-            - name: Install Dependencies
-              run: pnpm install --prefer-offline
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Dependencies
+        run: pnpm install --prefer-offline
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Set target branch as base branch
-              id: set_target_branch
-              shell: bash
-              run: |
-                  set -eux
-                  if [ -n "${{ github.base_ref }}" ]; then
-                    TARGET="${{ github.base_ref }}"
-                  else
-                    TARGET="${{ github.ref_name }}"
-                  fi
-                  echo "TARGET_BRANCH=$TARGET" >> $GITHUB_OUTPUT
+      - name: Set target branch as base branch
+        id: set_target_branch
+        shell: bash
+        run: |
+          set -eux
+          if [ -n "${{ github.base_ref }}" ]; then
+            TARGET="${{ github.base_ref }}"
+          else
+            TARGET="${{ github.ref_name }}"
+          fi
+          echo "TARGET_BRANCH=$TARGET" >> $GITHUB_OUTPUT
 
-            - name: Setup NX Base
-              run: |
-                  echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-                  echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
-            # - name: Set NX Affected SHA Signatures
-            #   uses: nrwl/nx-set-shas@v3
-            #   with:
-            #     main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+      - name: Setup NX Base
+        run: |
+          echo "NX_BASE=$(git rev-parse origin/${{ steps.set_target_branch.outputs.TARGET_BRANCH }})" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+      # - name: Set NX Affected SHA Signatures
+      #   uses: nrwl/nx-set-shas@v3
+      #   with:
+      #     main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
 
+      - name: Setup NX Affected List
+        id: setup_affected_list
+        run: |
+          set -eux
+          AFFECTED_LIST=$(eval "pnpm nx show projects --affected --json" || echo "[]")
+          echo "::debug::Affected list: ${AFFECTED_LIST}"
+          AFFECTED_DEPS_COUNT=$(echo "${AFFECTED_LIST}" | jq -r '. | length')
+          if [ "${AFFECTED_DEPS_COUNT}" -eq 0 ]; then
+              echo "PROJECT_NAMES={\"names\":[\"none\"]}" >> $GITHUB_OUTPUT
+              echo "SKIP=true" >> $GITHUB_OUTPUT
+              echo "::warning title=skipping jobs::Skipping job executions due no affected projects were found"
+              exit 0
+          fi
+          echo "PROJECT_NAMES=$(echo $AFFECTED_LIST | jq -r '. | @json')" >> $GITHUB_OUTPUT
+          echo "SKIP=false" >> $GITHUB_OUTPUT
 
-            - name: Setup NX Affected List
-              id: setup_affected_list
-              run: |
-                  set -eux
-                  AFFECTED_LIST=$(eval "pnpm nx show projects --affected --json" || echo "[]")
-                  echo "::debug::Affected list: ${AFFECTED_LIST}"
-                  AFFECTED_DEPS_COUNT=$(echo "${AFFECTED_LIST}" | jq -r '. | length')
-                  if [ "${AFFECTED_DEPS_COUNT}" -eq 0 ]; then
-                      echo "PROJECT_NAMES={\"names\":[\"none\"]}" >> $GITHUB_OUTPUT
-                      echo "SKIP=true" >> $GITHUB_OUTPUT
-                      echo "::warning title=skipping jobs::Skipping job executions due no affected projects were found"
-                      exit 0
-                  fi
-                  echo "PROJECT_NAMES=$(echo $AFFECTED_LIST | jq -r '. | @json')" >> $GITHUB_OUTPUT
-                  echo "SKIP=false" >> $GITHUB_OUTPUT
+      - name: Print Affected List
+        run: |
+          echo "Affected projects: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
 
-            - name: Print Affected List
-              run: |
-                  echo "Affected projects: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
+      - name: print outputs
+        run: |
+          echo "MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}"
+          echo "TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}"
+          echo "AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
 
-            - name: print outputs
-              run: |
-                  echo "MAX_JOBS_COUNT: ${{ steps.get_max_jobs_count.outputs.MAX_JOBS_COUNT }}"
-                  echo "TARGET_BRANCH: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}"
-                  echo "AFFECTED_LIST: ${{ steps.setup_affected_list.outputs.PROJECT_NAMES }}"
+  version-release:
+    needs: [setup]
+    name: Version Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: print inputs
+        run: |
+          echo "MAX_JOBS_COUNT: ${{ needs.setup.outputs.MAX_JOBS_COUNT }}"
+          echo "TARGET_BRANCH: ${{ needs.setup.outputs.TARGET_BRANCH }}"
+          echo "AFFECTED_LIST: ${{ needs.setup.outputs.AFFECTED_LIST }}"
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - name: Setup Node.js From Cache
+        uses: actions/setup-node@v3
+        with:
+          registry-url: https://npm.pkg.github.com
+          node-version: lts/*
+          cache: 'pnpm'
+      - name: Install Dependencies
+        run: pnpm install --prefer-offline
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    version-release:
-        needs: [setup]
-        name: Version Release
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
-            packages: write
-        steps:
-            - name: print inputs
-              run: |
-                  echo "MAX_JOBS_COUNT: ${{ needs.setup.outputs.MAX_JOBS_COUNT }}"
-                  echo "TARGET_BRANCH: ${{ needs.setup.outputs.TARGET_BRANCH }}"
-                  echo "AFFECTED_LIST: ${{ needs.setup.outputs.AFFECTED_LIST }}"
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - name: Setup PNPM
-              uses: pnpm/action-setup@v2
-              with:
-                  version: 10
-            - name: Setup Node.js From Cache
-              uses: actions/setup-node@v3
-              with:
-                  registry-url: https://npm.pkg.github.com
-                  node-version: lts/*
-                  cache: 'pnpm'
-            - name: Install Dependencies
-              run: pnpm install --prefer-offline
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup NX Base
+        run: |
+          echo "NX_BASE=$(git rev-parse origin/${{ needs.setup.outputs.TARGET_BRANCH }})" >> $GITHUB_ENV
+          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
 
-            - name: Setup NX Base
-              run: |
-                  echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-                  echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+      # - name: Set NX Affected SHA Signatures
+      #   uses: nrwl/nx-set-shas@v3
+      #   with:
+      #     main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
 
-            # - name: Set NX Affected SHA Signatures
-            #   uses: nrwl/nx-set-shas@v3
-            #   with:
-            #     main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
+      - name: Cache Nx
+        uses: actions/cache@v3
+        with:
+          path: node_modules/.cache/nx
+          key: ${{ runner.os }}-nx-${{ hashFiles('packages/**/package.json') }}-build
+      - name: Prepare GIT Environment
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Version Bump
+        run: pnpm nx affected -t version  --parallel=1 --baseBranch=${{needs.setup.outputs.TARGET_BRANCH}}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Affected Root Nodes
+        if: success()
+        run: pnpm nx affected -t build --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync tags to origin
+        if: success()
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git push origin --follow-tags
+      - name: Publish Affected Root Nodes
+        if: success()
+        run: pnpm nx affected -t publish:root --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-            - name: Cache Nx
-              uses: actions/cache@v3
-              with:
-                  path: node_modules/.cache/nx
-                  key: ${{ runner.os }}-nx-${{ hashFiles('packages/**/package.json') }}-build
-            - name: Prepare GIT Environment
-              run: |
-                  git config --global user.name 'github-actions[bot]'
-                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            - name: Version Bump
-              run: pnpm nx affected -t version  --parallel=1 --baseBranch=${{needs.setup.outputs.TARGET_BRANCH}}
-              env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Build Affected Root Nodes
-              if: success()
-              run: pnpm nx affected -t build --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Sync tags to origin
-              if: success()
-              run: |
-                  git config --global user.name 'github-actions[bot]'
-                  git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-                  git push origin --follow-tags
-            - name: Publish Affected Root Nodes
-              if: success()
-              run: pnpm nx affected -t publish:root --parallel=${{ needs.setup.outputs.MAX_JOBS_COUNT }}
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Generate Summary
-              if: success()
-              run: pnpm summary
+      - name: Generate Summary
+        if: success()
+        run: pnpm summary
