@@ -22,13 +22,13 @@
     "test:unit": "nx run-many --target=test:unit"
   },
   "devDependencies": {
-    "@commitlint/cli": "21.1.0",
-    "@commitlint/config-conventional": "21.1.0",
-    "@commitlint/format": "21.1.0",
-    "@commitlint/types": "21.1.0",
+    "@commitlint/cli": "20.0.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "@commitlint/format": "20.0.0",
+    "@commitlint/types": "20.0.0",
     "@eslint/js": "^10.0.1",
     "@eslint/json": "^2.0.0",
-    "@jscutlery/semver": "^5.8.1",
+    "@jscutlery/semver": "^6.1.2",
     "@nx/devkit": "22.7.5",
     "@nx/eslint-plugin": "22.7.5",
     "@nx/plugin": "22.7.5",
