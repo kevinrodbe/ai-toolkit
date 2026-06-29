@@ -2,12 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-## <small>0.3.4 (2026-06-29)</small>
+## <small>0.3.1 (2026-06-29)</small>
 
-* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
+* feat!: set nx sha + trigger version ([36e158e](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/36e158e))
+* feat!: trigger version ([1c6ac4c](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1c6ac4c))
+* test: 💍 add author ([28c5c78](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/28c5c78))
+* test: 💍 add license ([2bc4112](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/2bc4112))
+* chore(agent-code-reviewer): release version 0.3.2 [skip ci] ([8b8a07f](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8b8a07f))
+* chore(agent-code-reviewer): release version 0.3.3 [skip ci] ([d784e82](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/d784e82))
+* chore(agent-code-reviewer): release version 0.3.4 [skip ci] ([969a044](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/969a044))
 * chore(agent-code-reviewer): release version 0.3.5 [skip ci] ([5ef513d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/5ef513d))
+* chore(dk-link): release version 0.8.0 [skip ci] ([fce92b4](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/fce92b4))
+* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
 * style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
 
+
+### BREAKING CHANGE
+
+* 🧨 generate major version
+* 🧨 generate major version
+* version bump trigger
 
 
 ## [0.3.5](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.4...agent-code-reviewer-0.3.5) (2026-06-28)
