@@ -4,7 +4,7 @@ description: >
   Angular core patterns: standalone components, signals, inject, control flow, zoneless.
   Trigger: When creating Angular components, using signals, or setting up zoneless.
 metadata:
-  author: k-test
+  author: RodBe
   version: "1.15.12"
 ---
 

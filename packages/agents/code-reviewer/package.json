@@ -7,7 +7,7 @@
     "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
     "directory": "packages/agents/code-reviewer"
   },
-  "author": "",
+  "author": "RodBe",
   "type": "module",
   "files": [
     "src"

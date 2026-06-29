@@ -7,7 +7,7 @@
     "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
     "directory": "packages/cli/dk-link"
   },
-  "author": "",
+  "author": "RodBe",
   "type": "module",
   "bin": {
     "dk-link": "./dist/commands/dk-link.js"

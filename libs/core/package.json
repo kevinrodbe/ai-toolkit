@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "author": "Rodbe",
+  "author": "RodBe",
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",

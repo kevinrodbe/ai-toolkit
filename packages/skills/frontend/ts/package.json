@@ -7,7 +7,7 @@
     "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
     "directory": "packages/skills/frontend/ts"
   },
-  "author": "",
+  "author": "RodBe",
   "type": "module",
   "files": [
     "src"
