@@ -61,7 +61,7 @@ jobs:
 
       - name: Setup NX Base
         run: |
-          echo "NX_BASE=$(git rev-parse origin/${{ steps.set_target_branch.outputs.TARGET_BRANCH }})" >> $GITHUB_ENV
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
           echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
       # - name: Set NX Affected SHA Signatures
       #   uses: nrwl/nx-set-shas@v3
@@ -128,7 +128,7 @@ jobs:
 
       - name: Setup NX Base
         run: |
-          echo "NX_BASE=$(git rev-parse origin/${{ needs.setup.outputs.TARGET_BRANCH }})" >> $GITHUB_ENV
+          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
           echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
 
       # - name: Set NX Affected SHA Signatures
