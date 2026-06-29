@@ -4,6 +4,8 @@ description:
   Optimize React apps for 60fps performance. Implements memoization, code splitting, bundle optimization. Use for Bundle bloat. Activate on "React performance",
   "slow render", "useMemo", "bundle size". NOT for backend optimization, non-React frameworks, or premature optimization.
 allowed-tools: Read,Write,Edit,Bash(npm:*)
+metadata:
+  version: "0.0.0"
 ---
 
 # React Performance Optimizer
