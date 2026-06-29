@@ -59,14 +59,14 @@ jobs:
           fi
           echo "TARGET_BRANCH=$TARGET" >> $GITHUB_OUTPUT
 
-      - name: Setup NX Base
-        run: |
-          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
-      # - name: Set NX Affected SHA Signatures
-      #   uses: nrwl/nx-set-shas@v3
-      #   with:
-      #     main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
+      # - name: Setup NX Base
+      #   run: |
+      #     echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+      #     echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+      - name: Set NX Affected SHA Signatures
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: ${{ steps.set_target_branch.outputs.TARGET_BRANCH }}
 
       - name: Setup NX Affected List
         id: setup_affected_list
@@ -126,15 +126,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup NX Base
-        run: |
-          echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
-          echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
+      # - name: Setup NX Base
+      #   run: |
+      #     echo "NX_BASE=${{ github.event.before }}" >> $GITHUB_ENV
+      #     echo "NX_HEAD=${{ github.sha }}" >> $GITHUB_ENV
 
-      # - name: Set NX Affected SHA Signatures
-      #   uses: nrwl/nx-set-shas@v3
-      #   with:
-      #     main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
+      - name: Set NX Affected SHA Signatures
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: ${{ needs.setup.outputs.TARGET_BRANCH }}
 
       - name: Cache Nx
         uses: actions/cache@v3

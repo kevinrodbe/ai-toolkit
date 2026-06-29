@@ -1,2 +1,7 @@
 packages:
   - packages/**/*
+
+packageExtensions:
+  '@jscutlery/semver':
+    dependencies:
+      git-raw-commits: '4.0.0'
