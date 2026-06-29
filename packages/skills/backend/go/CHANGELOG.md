@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## <small>0.3.13 (2026-06-29)</small>
+
+* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
+* chore(skill-go): release version 0.3.14 [skip ci] ([11e8800](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/11e8800))
+* style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
+
+
+
 ## [0.3.14](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-go-0.3.13...skill-go-0.3.14) (2026-06-28)
 
 ## [0.3.13](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-go-0.3.12...skill-go-0.3.13) (2026-06-28)

@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## <small>1.15.11 (2026-06-29)</small>
+
+* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
+* chore(skill-ng): release version 1.15.12 [skip ci] ([bcb1a95](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/bcb1a95))
+* style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
+
+
+
 ## [1.15.12](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.15.11...skill-ng-1.15.12) (2026-06-28)
 
 ## [1.15.11](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ng-1.15.10...skill-ng-1.15.11) (2026-06-28)
