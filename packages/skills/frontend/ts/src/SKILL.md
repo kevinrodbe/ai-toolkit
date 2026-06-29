@@ -6,7 +6,7 @@ description: >
 license: Apache-2.0
 metadata:
   author: RodBe
-  version: "1.9.4"
+  version: "0.0.0"
 ---
 
 ## Const Types Pattern (REQUIRED)
