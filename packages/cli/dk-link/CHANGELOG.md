@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## 0.8.0 (2026-06-29)
+
+* chore(dk-link): release version 0.8.1 [skip ci] ([ec0c841](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/ec0c841))
+* style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
+
+
+
 ## [0.8.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.8.0...dk-link-0.8.1) (2026-06-28)
 
 ## [0.8.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-0.7.0...dk-link-0.8.0) (2026-06-28)

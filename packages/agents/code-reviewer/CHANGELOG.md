@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## <small>0.3.4 (2026-06-29)</small>
+
+* feat: bump deps + add generators ([8233b80](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/8233b80))
+* chore(agent-code-reviewer): release version 0.3.5 [skip ci] ([5ef513d](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/5ef513d))
+* style: format ([1143951](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/1143951))
+
+
+
 ## [0.3.5](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.4...agent-code-reviewer-0.3.5) (2026-06-28)
 
 ## [0.3.4](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-0.3.3...agent-code-reviewer-0.3.4) (2026-06-28)
