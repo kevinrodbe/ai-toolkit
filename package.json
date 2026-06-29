@@ -14,6 +14,7 @@
     "add:agent": "nx generate @kevinrodbe/nx-plugin:agent-generator",
     "add:skill": "nx generate @kevinrodbe/nx-plugin:skill-generator",
     "build:all": "nx run-many --target=build",
+    "commit": "pnpx git-cz",
     "lint:all": "nx run-many --target=lint",
     "lint:all:fix": "nx run-many --target=lint:fix",
     "prepare": "husky",
