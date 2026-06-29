@@ -1,11 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "isolatedModules": true,
+    "paths": {
+      "@kevinrodbe/nx-plugin": ["./libs/core"],
+      "@kevinrodbe/nx-plugin/*": ["./libs/core/*"]
+    },
+    "target": "ESNext"
+  },
   "exclude": ["node_modules"],
   "extends": "./tsconfig.no-dom.lib.json",
   "include": [
     "commitlint.config.ts",
-    "prettier.config.js",
     "eslint.config.js",
+    "packages/**/*",
+    "prettier.config.js",
     "scripts/*.js",
     "tsdown.config.ts"
   ]

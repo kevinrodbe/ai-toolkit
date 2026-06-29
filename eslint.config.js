@@ -89,7 +89,12 @@ export default defineConfig([
     files: ['**/*.{ts,tsx,js,jsx}'],
   },
   {
-    files: ['**/{layout,page,not-found}.tsx', 'panda.config.ts', '**/tsdown.config.ts'],
+    files: [
+      '**/{layout,page,not-found}.tsx',
+      'panda.config.ts',
+      '**/tsdown.config.ts',
+      'libs/core/**/*.ts',
+    ],
     rules: {
       'no-restricted-exports': [
         'error',

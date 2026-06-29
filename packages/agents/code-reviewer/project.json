@@ -2,12 +2,12 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "agent-code-reviewer",
   "projectType": "library",
-  "tags": ["type:library", "scope:package", "destination:feed"],
+  "tags": ["type:library", "destination:feed"],
   "targets": {
-    "commit-and-tag": {
+    "commit-tag-push": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+        "command": "node scripts/commit-tag-push.js --projectRoot {projectRoot} --projectName {projectName}"
       }
     },
     "github": {
@@ -37,16 +37,22 @@
         "command": "pnpm -F @kevinrodbe/agent-code-reviewer publish --no-git-checks"
       }
     },
+    "sync-md-version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/sync-md-version.js --projectRoot {projectRoot} --capabilityType agent"
+      }
+    },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "allowEmptyRelease": true,
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "noVerify": true,
-        "postTargets": ["github"],
+        "postTargets": ["sync-md-version", "commit-tag-push", "github"],
         "preset": "conventional",
-        "push": true,
-        "skipCommit": false,
+        "push": false,
+        "skipCommit": true,
         "trackDeps": true
       }
     }

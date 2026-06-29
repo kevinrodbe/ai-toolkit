@@ -4,10 +4,10 @@
   "projectType": "library",
   "tags": ["type:library", "scope:package", "destination:feed"],
   "targets": {
-    "commit-and-tag": {
+    "commit-tag-push": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/commit-and-tag.js --projectRoot {projectRoot} --projectName {projectName}"
+        "command": "node scripts/commit-tag-push.js --projectRoot {projectRoot} --projectName {projectName}"
       }
     },
     "github": {
@@ -37,10 +37,10 @@
         "command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
       }
     },
-    "sync-skill-version": {
+    "sync-md-version": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/sync-skill-version.js --projectRoot {projectRoot}"
+        "command": "node scripts/sync-md-version.js --projectRoot {projectRoot}"
       }
     },
     "version": {
@@ -49,7 +49,7 @@
         "allowEmptyRelease": true,
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "noVerify": true,
-        "postTargets": ["sync-skill-version", "commit-and-tag", "skill-ts:github"],
+        "postTargets": ["sync-md-version", "commit-tag-push", "skill-ts:github"],
         "preset": "conventional",
         "push": false,
         "skipCommit": true,

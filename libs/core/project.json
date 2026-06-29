@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "nx-plugin",
+  "projectType": "library",
+  "sourceRoot": "libs/core/src",
+  "tags": ["type:plugin", "access:internal"]
+}

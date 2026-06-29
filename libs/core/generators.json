@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "agent-generator": {
+      "description": "agent generator",
+      "factory": "./src/generators/agent-generator/agent-generator",
+      "schema": "./src/generators/agent-generator/schema.json"
+    },
+    "skill-generator": {
+      "description": "skill generator",
+      "factory": "./src/generators/skill-generator/skill-generator",
+      "schema": "./src/generators/skill-generator/schema.json"
+    }
+  }
+}

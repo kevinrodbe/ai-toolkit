@@ -38,7 +38,7 @@
         "command": "pnpm -F @kevinrodbe/skill-react-performance publish --no-git-checks"
       }
     },
-    "sync-skill-version": {
+    "sync-md-version": {
       "executor": "nx:run-commands",
       "options": {
         "command": "node scripts/sync-md-version.js --projectRoot {projectRoot} --capabilityType skill"
@@ -50,7 +50,7 @@
         "allowEmptyRelease": true,
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "noVerify": true,
-        "postTargets": ["sync-skill-version", "commit-tag-push", "github"],
+        "postTargets": ["sync-md-version", "commit-tag-push", "github"],
         "preset": "conventional",
         "push": false,
         "skipCommit": true,

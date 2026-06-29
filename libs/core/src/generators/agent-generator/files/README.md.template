@@ -1,0 +1,4 @@
+# @kevinrodbe/agent-<%= kebabName %>
+
+Shareable agent that **enforces strict patterns and best practices**.
+It is automatically activated when writing code according to the description in [AGENT.md](https://github.com/kevinrodbe/ai-toolkit/blob/develop/packages/agents/<%= kebabName %>/src/AGENT.md).

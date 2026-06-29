@@ -1,0 +1,42 @@
+{
+	"name": "@kevinrodbe/agent-<%= kebabName %>",
+	"version": "0.2.0",
+	"description": "Shareable <%= kebabName %> Agent",
+	"keywords": [
+		"Agents"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kevinrodbe/ai-toolkit.git",
+		"directory": "packages/agents/<%= kebabName %>"
+	},
+	"license": "MIT",
+	"author": "RodBe",
+	"files": [
+		"src"
+	],
+	"scripts": {
+		"build": "echo 'Not needed'",
+		"dev": "echo 'Not needed'",
+		"lint": "echo no needed",
+		"lint:code": "echo 'Not needed'",
+		"lint:code:fix": "echo 'Not needed'",
+		"lint:fix": "echo 'Not needed'",
+		"lint:types": "echo 'Not needed'",
+		"test:coverage": "echo no needed",
+		"test:unit": "echo no needed"
+	},
+	"engines": {
+		"node": ">= 22.0.0",
+		"npm": ">= 10.0.0",
+		"pnpm": ">= 10.0.0"
+	},
+	"engineStrict": true,
+	"volta": {
+		"node": "22.18.0",
+		"pnpm": "10.12.1"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+  "$id": "SkillGenerator",
+  "$schema": "../../../../../node_modules/nx/schemas/nx-schema.json",
+  "properties": {
+    "category": {
+      "description": "Folder where the skill will be created",
+      "index": 0,
+      "type": "string",
+      "x-prompt": {
+        "items": [
+          {
+            "label": "Frontend",
+            "value": "frontend"
+          },
+          {
+            "label": "Backend",
+            "value": "backend"
+          }
+        ],
+        "message": "To which category does it belong?",
+        "type": "list"
+      }
+    },
+    "name": {
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "description": "",
+      "type": "string",
+      "x-prompt": "Skill name? (without prefix skill-)"
+    }
+  },
+  "required": ["name", "category"],
+  "title": "",
+  "type": "object"
+}

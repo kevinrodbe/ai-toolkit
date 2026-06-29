@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+
 import { parseArgs, readJson } from './utils.js';
 
 const VERSION_PATTERN = /version:\s*"[^"]*"/;
@@ -34,7 +35,7 @@ const updateFrontmatterVersion = (content, newVersion) => {
     }
 
     if (frontmatterOpen) {
-      if (line.startsWith('metadata:')) {
+      if (/^metadata:/.test(line)) {
         inMetadata = true;
         metadataLineIndex = i;
       } else if (inMetadata && /^\S/.test(line)) {
@@ -66,8 +67,22 @@ const updateFrontmatterVersion = (content, newVersion) => {
   return { content: result.join('\n'), updated: true };
 };
 
+/**
+ * @param {string} capabilityType - agent or skill
+ */
+const getMdFile = (capabilityType = 'skill') => {
+  if (capabilityType === 'agent') {
+    return 'AGENT.md';
+  }
+
+  return 'SKILL.md';
+};
+
 const main = () => {
-  const { projectRoot } = parseArgs(process.argv, ['--projectRoot']);
+  const { projectRoot, capabilityType } = parseArgs(process.argv, [
+    '--projectRoot',
+    '--capabilityType',
+  ]);
 
   if (!projectRoot) {
     console.error('❌ Error: --projectRoot argument is required');
@@ -96,23 +111,23 @@ const main = () => {
     process.exit(1);
   }
 
-  const skillMdPath = join(absoluteProjectRoot, 'src', 'SKILL.md');
+  const mainMdPath = join(absoluteProjectRoot, 'src', getMdFile(capabilityType));
 
-  if (!existsSync(skillMdPath)) {
-    console.log(`⚠️ Warning: No SKILL.md found at ${skillMdPath} — skipping`);
+  if (!existsSync(mainMdPath)) {
+    console.log(`⚠️ Warning: ${mainMdPath} not found — skipping`);
     process.exit(0);
   }
 
-  const original = readFileSync(skillMdPath, 'utf-8');
+  const original = readFileSync(mainMdPath, 'utf-8');
   const { content: updatedContent, updated } = updateFrontmatterVersion(original, version);
 
   if (!updated) {
-    console.log(`⚠️ Warning: SKILL.md at ${skillMdPath} has no frontmatter — skipping`);
+    console.log(`⚠️ Warning: ${mainMdPath} has no frontmatter — skipping`);
     process.exit(0);
   }
 
-  writeFileSync(skillMdPath, updatedContent, 'utf-8');
-  console.log(`✅ Synced SKILL.md version → ${version}`);
+  writeFileSync(mainMdPath, updatedContent, 'utf-8');
+  console.log(`✅ Synced "${mainMdPath}" version → ${version}`);
 };
 
 main();
