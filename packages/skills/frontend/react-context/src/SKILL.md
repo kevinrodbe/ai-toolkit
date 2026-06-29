@@ -4,7 +4,7 @@ description: >
   React Context creation with TypeScript — State + Actions separation, typed Provider, and typed hook with guard.
   Invoke when the user asks for a context/provider/hook, or when the AI detects that state or services need to be shared across a component tree without prop drilling.
 metadata:
-  version: "0.0.0"
+  version: "0.0.1"
 ---
 
 ## Elicitation
