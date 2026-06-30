@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.1](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/react-performance-1.0.0...react-performance-1.0.1) (2026-06-30)
+
 ## [1.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/react-performance-0.0.1...react-performance-1.0.0) (2026-06-29)
 
 
