@@ -5,7 +5,7 @@ description:
   "slow render", "useMemo", "bundle size". NOT for backend optimization, non-React frameworks, or premature optimization.
 allowed-tools: Read,Write,Edit,Bash(npm:*)
 metadata:
-  version: "1.0.2"
+  version: "2.0.0"
 ---
 
 # React Performance Optimizer
