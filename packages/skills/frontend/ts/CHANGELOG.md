@@ -8,6 +8,19 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 ### ⚠ BREAKING CHANGES
 
 * trigger version
+* trigger version
+
+### Features
+
+* trigger version ([18c1778](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/18c1778579df067d0b6002d1f13071bca131aa8c))
+* trigger version ([3f41e4f](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/3f41e4fb3792eaa71572be261ea0813f8bbbb479))
+
+## [1.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/skill-ts-0.0.2...skill-ts-1.0.0) (2026-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* trigger version
 
 ### Features
 
