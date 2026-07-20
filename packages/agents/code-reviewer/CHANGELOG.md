@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-2.0.3...agent-code-reviewer-3.0.0) (2026-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* generate breaking change
+
+### Features
+
+* generate breaking change ([9638eac](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/9638eac16f4b086e1f621dce0d3bd5c4f5db3b4f))
+
 ## [2.0.3](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-2.0.2...agent-code-reviewer-2.0.3) (2026-07-20)
 
 ## [2.0.2](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/agent-code-reviewer-2.0.1...agent-code-reviewer-2.0.2) (2026-07-20)
