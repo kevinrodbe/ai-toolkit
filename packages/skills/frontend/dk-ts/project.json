@@ -49,7 +49,7 @@
         "allowEmptyRelease": true,
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "noVerify": true,
-        "postTargets": ["sync-md-version", "commit-tag-push", "skill-ts:github"],
+        "postTargets": ["sync-md-version", "commit-tag-push", "github"],
         "preset": "conventional",
         "push": false,
         "skipCommit": true,
