@@ -9,9 +9,12 @@
   },
   "license": "MIT",
   "author": "RodBe",
+  "sideEffects": false,
   "type": "module",
   "files": [
-    "src"
+    "*",
+    "!project.json",
+    "!CHANGELOG.md"
   ],
   "scripts": {
     "build": "echo no needed",

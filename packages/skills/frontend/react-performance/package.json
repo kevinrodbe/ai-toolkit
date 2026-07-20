@@ -7,9 +7,14 @@
     "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
     "directory": "packages/skills/frontend/react-performance"
   },
+  "license": "MIT",
+  "author": "RodBe",
+  "sideEffects": false,
   "type": "module",
   "files": [
-    "src"
+    "*",
+    "!project.json",
+    "!CHANGELOG.md"
   ],
   "scripts": {
     "build": "echo 'Not needed'",

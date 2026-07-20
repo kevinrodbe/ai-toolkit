@@ -12,8 +12,11 @@
 	},
 	"license": "MIT",
 	"author": "RodBe",
+	"sideEffects": false,
 	"files": [
-		"src"
+		"*",
+		"!project.json",
+		"!CHANGELOG.md"
 	],
 	"scripts": {
 		"build": "echo 'Not needed'",
