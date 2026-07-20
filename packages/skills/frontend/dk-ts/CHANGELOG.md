@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-0.1.0...dk-ts-0.1.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **skill-dk-ts:** reference post-target ([397d4f9](https://github.com/kevinrodbe/ai-toolkit/commit/397d4f92b68a53f4744dd2595f85057cbb6bd86c))
+
 ## 0.1.0 (2026-07-20)
 
 
