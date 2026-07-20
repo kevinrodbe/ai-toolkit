@@ -3,7 +3,7 @@ name: code-reviewer
 description: >
     Delegate here whenever the user asks to review, audit, or evaluate code — including phrases like "revisar código", "revisa este PR", "code review", "check my code", "qué tan bien está escrito", "hay algo mal aquí", "dame feedback del código", or any request about code quality or before-merge checks. Performs a Staff-Engineer-level review across correctness, readability, architecture, security, and performance; outputs a structured verdict with Critical / Important / Suggestion findings.
 metadata:
-  version: "2.0.2"
+  version: "2.0.3"
 ---
 
 # Senior Code Reviewer
