@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## 0.1.0 (2026-07-20)
+
+
+### Features
+
+* re-structure files and names ([0a69d8d](https://github.com/kevinrodbe/ai-toolkit/commit/0a69d8d85aa104597b4ff57ea9797da78f25ab56))
+
 ## [2.1.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/react-performance-2.0.0...react-performance-2.1.0) (2026-07-20)
 
 
