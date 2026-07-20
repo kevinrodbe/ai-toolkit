@@ -1,5 +1,5 @@
 ---
-name: ts
+name: dk-ts
 description: >
   TypeScript strict patterns and best practices.
   Trigger: When writing TypeScript code - types, interfaces, generics.

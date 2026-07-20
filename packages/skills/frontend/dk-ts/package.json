@@ -1,11 +1,11 @@
 {
-  "name": "@kevinrodbe/skill-react-context",
+  "name": "@kevinrodbe/skill-dk-ts",
   "version": "2.1.0",
-  "description": "Shareable react-context Skills!!!!",
+  "description": "Skill TS!!!!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-    "directory": "packages/skills/frontend/react-context"
+    "url": "git+https://github.com/kevinrodbe/ai-toolkit.git",
+    "directory": "packages/skills/frontend/dk-ts"
   },
   "license": "MIT",
   "author": "RodBe",
@@ -17,15 +17,18 @@
     "!CHANGELOG.md"
   ],
   "scripts": {
-    "build": "echo 'Not needed'",
-    "dev": "echo 'Not needed'",
+    "build": "echo no needed",
+    "dev": "echo no needed",
     "lint": "echo no needed",
-    "lint:code": "echo 'Not needed'",
-    "lint:code:fix": "echo 'Not needed'",
-    "lint:fix": "echo 'Not needed'",
-    "lint:types": "echo 'Not needed'",
+    "lint:code": "echo no needed",
+    "lint:code:fix": "echo no needed",
+    "lint:fix": "echo no needed",
+    "lint:types": "echo no needed",
     "test:coverage": "echo no needed",
     "test:unit": "echo no needed"
+  },
+  "dependencies": {
+    "@rodbe/fn-utils": "1.12.0"
   },
   "engines": {
     "node": ">= 22.0.0",

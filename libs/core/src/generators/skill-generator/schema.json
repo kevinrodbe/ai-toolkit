@@ -28,7 +28,7 @@
       },
       "description": "",
       "type": "string",
-      "x-prompt": "Skill name? (without prefix skill-)"
+      "x-prompt": "Skill name? (without prefix skill-dk-)"
     }
   },
   "required": ["name", "category"],

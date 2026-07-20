@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "name": "skill-ts",
+  "name": "dk-ts",
   "projectType": "library",
   "tags": ["type:library", "scope:package", "destination:feed"],
   "targets": {
@@ -34,7 +34,7 @@
     "publish:root": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm -F @kevinrodbe/skill-ts publish --no-git-checks"
+        "command": "pnpm -F @kevinrodbe/skill-dk-ts publish --no-git-checks"
       }
     },
     "sync-md-version": {

@@ -1,8 +1,8 @@
 {
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "name": "react-performance",
+  "name": "dk-react-context",
   "projectType": "library",
-  "sourceRoot": "packages/skills/react-performance/src",
+  "sourceRoot": "packages/skills/frontend/dk-react-context/src",
   "tags": ["type:library", "scope:package", "destination:feed"],
   "targets": {
     "commit-tag-push": {
@@ -35,7 +35,7 @@
     "publish:root": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm -F @kevinrodbe/skill-react-performance publish --no-git-checks"
+        "command": "pnpm -F @kevinrodbe/skill-dk-react-context publish --no-git-checks"
       }
     },
     "sync-md-version": {

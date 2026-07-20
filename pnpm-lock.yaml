@@ -138,11 +138,11 @@ importers:
         specifier: ^3.0.6
         version: 3.2.6(@types/node@25.9.4)(jiti@2.6.1)(yaml@2.9.0)
 
-  packages/skills/frontend/react-context: {}
+  packages/skills/frontend/dk-react-context: {}
 
-  packages/skills/frontend/react-performance: {}
+  packages/skills/frontend/dk-react-performance: {}
 
-  packages/skills/frontend/ts:
+  packages/skills/frontend/dk-ts:
     dependencies:
       '@rodbe/fn-utils':
         specifier: 1.12.0

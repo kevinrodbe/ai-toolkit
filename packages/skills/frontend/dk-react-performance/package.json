@@ -1,11 +1,11 @@
 {
-  "name": "@kevinrodbe/skill-react-performance",
+  "name": "@kevinrodbe/skill-dk-react-performance",
   "version": "2.1.0",
   "description": "Shareable react-performance Skills!!!!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kevinrodbe/ia-toolkit-test-nx.git",
-    "directory": "packages/skills/frontend/react-performance"
+    "url": "git+https://github.com/kevinrodbe/ai-toolkit.git",
+    "directory": "packages/skills/frontend/dk-react-performance"
   },
   "license": "MIT",
   "author": "RodBe",

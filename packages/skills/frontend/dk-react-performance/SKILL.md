@@ -1,5 +1,5 @@
 ---
-name: react-performance-optimizer
+name: dk-react-performance
 description:
   Optimize React apps for 60fps performance. Implements memoization, code splitting, bundle optimization. Use for Bundle bloat. Activate on "React performance",
   "slow render", "useMemo", "bundle size". NOT for backend optimization, non-React frameworks, or premature optimization.
@@ -7,10 +7,6 @@ allowed-tools: Read,Write,Edit,Bash(npm:*)
 metadata:
   version: "2.0.0"
 ---
-
-# React Performance Optimizer
-
-Expert in diagnosing and fixing React performance issues to achieve buttery-smooth 60fps experiences.
 
 ## When to Use
 
