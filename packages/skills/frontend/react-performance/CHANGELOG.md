@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.1.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/react-performance-2.0.0...react-performance-2.1.0) (2026-07-20)
+
+
+### Features
+
+* re-structure ([442df02](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/442df0265316af20b4ee00f51091d8cee44d78e4))
+
 ## [2.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/react-performance-1.0.2...react-performance-2.0.0) (2026-06-30)
 
 
