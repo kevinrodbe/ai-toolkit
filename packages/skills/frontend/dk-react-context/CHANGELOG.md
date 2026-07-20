@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.0](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-context-0.1.1...dk-react-context-1.0.0) (2026-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* generate breaking change
+
+### Features
+
+* generate breaking change ([9638eac](https://github.com/kevinrodbe/ai-toolkit/commit/9638eac16f4b086e1f621dce0d3bd5c4f5db3b4f))
+
 ## [0.1.1](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-context-0.1.0...dk-react-context-0.1.1) (2026-07-20)
 
 ## 0.1.0 (2026-07-20)
