@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.1.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-3.0.0...dk-link-3.1.0) (2026-07-27)
+
+
+### Features
+
+* update cli with new structure ([dacb955](https://github.com/kevinrodbe/ia-toolkit-test-nx/commit/dacb9555a2d636d80bf94ae1d33a4552eab106f9))
+
 ## [3.0.0](https://github.com/kevinrodbe/ia-toolkit-test-nx/compare/dk-link-2.0.3...dk-link-3.0.0) (2026-07-20)
 
 
