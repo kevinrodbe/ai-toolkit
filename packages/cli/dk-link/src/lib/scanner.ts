@@ -35,7 +35,7 @@ export const scanNodeModules = (cwd: string): ScanResult => {
 
   for (const pkg of packages) {
     if (pkg.startsWith('skill-')) {
-      const srcDir = join(scopeDir, pkg, 'src');
+      const srcDir = join(scopeDir, pkg);
 
       if (existsSync(srcDir)) {
         const shortName = pkg.replace(/^skill-/, '');
@@ -43,7 +43,7 @@ export const scanNodeModules = (cwd: string): ScanResult => {
         skills.push({ name: pkg, packageName: `${SCOPE}/${pkg}`, shortName, srcDir });
       }
     } else if (pkg.startsWith('agent-')) {
-      const srcDir = join(scopeDir, pkg, 'src');
+      const srcDir = join(scopeDir, pkg);
 
       if (existsSync(srcDir)) {
         const shortName = pkg.replace(/^agent-/, '');
