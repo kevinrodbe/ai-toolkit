@@ -1,4 +1,4 @@
 # @kevinrodbe/skill-<%= kebabName %>
 
 Shareable skill that **enforces strict patterns and best practices**.
-It is automatically activated when writing code according to the description in [SKILL.md](https://github.com/kevinrodbe/ai-toolkit/blob/develop/packages/skills/<%= category %>/<%= kebabName %>/src/SKILL.md).
+It is automatically activated when writing code according to the description in [SKILL.md](https://github.com/kevinrodbe/ai-toolkit/blob/develop/packages/skills/<%= category %>/<%= kebabName %>/SKILL.md).

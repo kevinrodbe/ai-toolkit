@@ -1,14 +1,13 @@
-import * as path from 'path';
-
+import { join } from 'node:path';
 import { type Tree, addProjectConfiguration, formatFiles, generateFiles } from '@nx/devkit';
 
 import { type SkillGeneratorSchema } from './schema';
 import { kebabCase } from '../../utils';
 
 export async function skillGenerator(tree: Tree, options: SkillGeneratorSchema) {
-  const kebabName = kebabCase(options.name);
+  const kebabName = `dk-${kebabCase(options.name)}`;
 
-  const projectRoot = `packages/skills/${kebabName}`;
+  const projectRoot = `packages/skills/${options.category}/${kebabName}`;
 
   addProjectConfiguration(tree, kebabName, {
     name: kebabName,
@@ -73,7 +72,7 @@ export async function skillGenerator(tree: Tree, options: SkillGeneratorSchema) 
       },
     },
   });
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, { ...options, kebabName });
+  generateFiles(tree, join(__dirname, 'files'), projectRoot, { ...options, kebabName });
   await formatFiles(tree);
 }
 
