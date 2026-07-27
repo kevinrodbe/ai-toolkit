@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-1.0.0...dk-ts-1.1.0) (2026-07-27)
+
+
+### Features
+
+* update ts skill ([06fd4d0](https://github.com/kevinrodbe/ai-toolkit/commit/06fd4d0821b5e44ed50f77183443dd84b6742876))
+
 ## [1.0.0](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-0.1.1...dk-ts-1.0.0) (2026-07-20)
 
 
