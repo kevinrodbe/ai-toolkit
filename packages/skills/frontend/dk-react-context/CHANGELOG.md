@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-context-1.0.2...dk-react-context-1.0.3) (2026-09-02)
+
+
+### Bug Fixes
+
+* trigger version ([11629c0](https://github.com/kevinrodbe/ai-toolkit/commit/11629c09e19da6b97321051ad5959d1e22447470))
+
 ## [1.0.2](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-context-1.0.1...dk-react-context-1.0.2) (2026-09-02)
 
 
