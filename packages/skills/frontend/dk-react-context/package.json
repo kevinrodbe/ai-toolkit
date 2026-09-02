@@ -1,7 +1,7 @@
 {
   "name": "@kevinrodbe/skill-dk-react-context",
   "version": "1.0.2",
-  "description": "Shareable react-context Skills",
+  "description": "Shareable react-context Skills.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevinrodbe/ai-toolkit.git",
