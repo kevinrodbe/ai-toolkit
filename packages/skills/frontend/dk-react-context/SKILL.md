@@ -91,12 +91,12 @@ type <Name>ProviderProps = {
 };
 
 export const <Name>Provider = ({ children }: <Name>ProviderProps) => {
-  const [<stateVar>, set<StateVar>] = useState<<Name>ContextValue["<stateVar>"]>(<initialValue>);
+  const [<stateVar>, set<StateVar>] = useState<Pick<<Name>ContextValue, 'field1' | 'field2'>>(<initialValue>);
 
   const value = useMemo(
     () => ({
-      <stateVar>,
-      <action>: () => set<StateVar>(<nextValue>),
+      ...<stateVar>,
+      <action>: (<nextValue>) => set<StateVar>(prev => ({ ...prev, <nextValue>})),
       <derivedField>: <stateVar> === <caseA> ? <valueA> : <valueB>,
     }),
     [<stateVar>]
