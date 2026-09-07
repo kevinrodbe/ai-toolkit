@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-performance-1.0.3...dk-react-performance-1.0.4) (2026-09-07)
+
 ## [1.0.3](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-performance-1.0.2...dk-react-performance-1.0.3) (2026-09-02)
 
 ## [1.0.2](https://github.com/kevinrodbe/ai-toolkit/compare/dk-react-performance-1.0.1...dk-react-performance-1.0.2) (2026-09-02)
