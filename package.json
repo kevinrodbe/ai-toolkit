@@ -15,6 +15,8 @@
     "add:skill": "nx generate @kevinrodbe/nx-plugin:skill-generator",
     "build:all": "nx run-many --target=build",
     "commit": "pnpx git-cz",
+    "link:skills": "node scripts/link-skills.js",
+    "link:skills:unlink": "node scripts/link-skills.js --action=unlink",
     "lint:all": "nx run-many --target=lint",
     "lint:all:fix": "nx run-many --target=lint:fix",
     "prepare": "husky",
@@ -22,6 +24,7 @@
     "test:unit": "nx run-many --target=test:unit"
   },
   "devDependencies": {
+    "@clack/prompts": "^1.8.0",
     "@commitlint/cli": "20.0.0",
     "@commitlint/config-conventional": "20.0.0",
     "@commitlint/format": "20.0.0",
