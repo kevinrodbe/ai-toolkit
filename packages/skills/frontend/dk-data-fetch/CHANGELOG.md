@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.4](https://github.com/kevinrodbe/ai-toolkit/compare/dk-data-fetch-0.1.3...dk-data-fetch-0.1.4) (2026-09-08)
+
 ## [0.1.3](https://github.com/kevinrodbe/ai-toolkit/compare/dk-data-fetch-0.1.2...dk-data-fetch-0.1.3) (2026-09-07)
 
 ## [0.1.2](https://github.com/kevinrodbe/ai-toolkit/compare/dk-data-fetch-0.1.1...dk-data-fetch-0.1.2) (2026-09-02)
