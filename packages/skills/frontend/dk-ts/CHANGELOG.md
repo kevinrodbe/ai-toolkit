@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.5](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-1.1.4...dk-ts-1.1.5) (2026-09-09)
+
 ## [1.1.4](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-1.1.3...dk-ts-1.1.4) (2026-09-08)
 
 ## [1.1.3](https://github.com/kevinrodbe/ai-toolkit/compare/dk-ts-1.1.2...dk-ts-1.1.3) (2026-09-07)
