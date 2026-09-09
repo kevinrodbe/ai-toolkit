@@ -145,6 +145,8 @@ importers:
 
   packages/skills/frontend/dk-frontend-architecture: {}
 
+  packages/skills/frontend/dk-pn-up: {}
+
   packages/skills/frontend/dk-react-context: {}
 
   packages/skills/frontend/dk-react-performance: {}
